@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">{{list.id}}</ion-title>
@@ -18,12 +19,15 @@
     </ion-item>
   </ion-list>
 
-  <ion-icon></ion-icon>
-  Show checked items
+  <div (click)="toggleCheckedItems()">
+    <ion-icon [name]="areCheckedItemsShown ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+    Checked items
+  </div>
   <ion-list *ngIf="areCheckedItemsShown">
     <ion-item *ngFor="let item of filterCheckedItems()">
       <ion-checkbox checked={{item.checked}}></ion-checkbox>
       <ion-label>{{item.id}}</ion-label>
     </ion-item>
   </ion-list>
+
 </ion-content>

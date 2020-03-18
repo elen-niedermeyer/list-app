@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { ListsService } from '../services/lists.service';
-import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,6 +9,8 @@ import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 })
 export class TodoListPage implements OnInit {
   list = { "id": null as string, "items": [] }; /*TODO: was mache ich damit?*/
+
+  areCheckedItemsShown: boolean = false;
 
   constructor(private listsService: ListsService, private route: ActivatedRoute) { }
 
@@ -29,11 +29,15 @@ export class TodoListPage implements OnInit {
     });
   }
 
-  filterUncheckedItems(){
-    return this.list.items.filter(item => {return !item.checked;});
+  filterUncheckedItems() {
+    return this.list.items.filter(item => { return !item.checked; });
   }
 
-  filterCheckedItems(){
-    return this.list.items.filter(item => {return item.checked;});
+  filterCheckedItems() {
+    return this.list.items.filter(item => { return item.checked; });
+  }
+
+  toggleCheckedItems() {
+    this.areCheckedItemsShown = !this.areCheckedItemsShown;
   }
 }
