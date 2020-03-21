@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ListsService } from '../services/lists.service';
+import { ListsService } from '../../services/lists.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -16,15 +16,13 @@ export class TodoListPage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.listsService.getLists()
+      this.listsService.lists
         .subscribe(lists => {
-          if (Array.isArray(lists)) {
-            lists.filter(list => {
-              if (list.id == params.get('listId')) {
-                this.list = list;
-              }
-            })
-          }
+          lists.filter(list => {
+            if (list.id == params.get('listId')) {
+              this.list = list;
+            }
+          })
         })
     });
   }

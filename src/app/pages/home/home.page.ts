@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ListsService } from '../services/lists.service';
+import { ListsService } from '../../services/lists.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +8,11 @@ import { ListsService } from '../services/lists.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  lists;
 
   constructor(
-    private listsService: ListsService
+    public listsService: ListsService
   ) {
-    this.lists = this.listsService.getLists();
+    listsService.updateListsObservable();
   }
 
 }
