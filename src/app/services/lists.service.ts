@@ -1,22 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { List } from '../list';
+import { List } from '../list'; import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListsService {
-  listsUrl = '../assets/data/lists.json';
-
   lists: Observable<Array<List>>;
+  private listsCollection: AngularFirestoreCollection<List>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private firestore: AngularFirestore) {
     this.updateListsObservable;
   }
 
   updateListsObservable() {
-    this.lists = this.http.get<Array<List>>(this.listsUrl);
+    this.listsCollection = this.firestore.collection<List>('lists')
+    this.lists = this.listsCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
   }
 
   // TODO: there could be several
@@ -30,20 +39,9 @@ export class ListsService {
 
   // TODO: correct post to server
   addList(newList: List): Promise<boolean> {
-    return this.getLists()
-      .then(lists => {
-        lists.push(newList);
-        return this.http.post<List>(this.listsUrl, lists).toPromise()
-          .then(() => { return true; })
-          .catch(() => { return false; })
-      })
+    return this.listsCollection.add(newList)
+      .then(() => { return true; })
       .catch(() => { return false; });
-  }
-
-  private async getLists(): Promise<Array<List>> {
-    return this.lists.toPromise()
-      .then(lists => { return lists; })
-      .catch(() => { return new Array<List>(); });
   }
 
 }

@@ -13,6 +13,7 @@ export class HomePage {
     public listsService: ListsService
   ) {
     listsService.updateListsObservable();
+    listsService.lists.toPromise().then(data => console.log(data));
   }
 
 }
