@@ -1,8 +1,6 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{list.id}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="{{list.id}}">
+  <app-edit-button slot="end" routerLink=""></app-edit-button>
+</app-header>
 
 <ion-content [fullscreen]="true">
 

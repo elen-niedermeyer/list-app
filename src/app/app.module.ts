@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -10,8 +11,8 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddButtonModule } from './components/add-button/add-button.module';
-import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
-
+import { EditButtonModule } from './components/edit-button/edit-button.module';
+import { HeaderModule } from './components/header/header.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,9 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AddButtonModule
+    AddButtonModule,
+    EditButtonModule,
+    HeaderModule
   ],
   providers: [
     StatusBar,
