@@ -8,7 +8,7 @@ import { ListsService } from '../../services/lists.service';
   styleUrls: ['./todo-list.page.scss'],
 })
 export class TodoListPage implements OnInit {
-  list = { "id": null as string, "items": [] }; /*TODO: was mache ich damit?*/
+  list = { "id": "listId", "items": [] }; /*TODO: was mache ich damit?*/
 
   areCheckedItemsShown: boolean = false;
 

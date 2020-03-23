@@ -10,8 +10,4 @@ export class HomeButtonComponent {
 
   constructor(private router: Router) { }
 
-  navigateToHome() {
-    this.router.navigate(['']);
-  }
-
 }

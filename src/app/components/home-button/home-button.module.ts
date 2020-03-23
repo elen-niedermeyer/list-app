@@ -9,7 +9,7 @@ import { HomeButtonComponent } from './home-button.component';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule
   ],
   exports: [HomeButtonComponent]
 })

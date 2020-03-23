@@ -11,7 +11,7 @@ export class ListsService {
   lists: Observable<Array<List>>;
   private listsCollection: AngularFirestoreCollection<List>;
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore) {
     this.updateListsObservable;
   }
 
