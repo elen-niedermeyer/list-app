@@ -1,0 +1,11 @@
+<app-header title="New To Do List"></app-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="submitListForm()">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="list.id" name="id"></ion-input>
+    </ion-item>
+    <ion-button [disabled]="!list.id" type="submit">Create list</ion-button>
+  </form>
+</ion-content>

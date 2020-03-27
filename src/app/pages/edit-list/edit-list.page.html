@@ -1,0 +1,11 @@
+<app-header title="Edit To Do List"></app-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="updateListForm()">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="list.id" name="id"></ion-input>
+    </ion-item>
+    <ion-button [disabled]="!list.id" type="submit">Update list name</ion-button>
+  </form>
+</ion-content>

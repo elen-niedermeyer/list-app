@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ListsService } from '../services/lists.service';
+import { ListsService } from '../../services/lists.service';
+import { ElementTypes } from 'src/app/element-types.enum';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,7 +9,10 @@ import { ListsService } from '../services/lists.service';
   styleUrls: ['./todo-list.page.scss'],
 })
 export class TodoListPage implements OnInit {
-  list = { "id": null as string, "items": [] }; /*TODO: was mache ich damit?*/
+
+  deleteButtonType = ElementTypes.TYPE_LIST
+
+  list = { "id": "listId", "items": [] }; /*TODO: was mache ich damit?*/
 
   areCheckedItemsShown: boolean = false;
 
@@ -16,17 +20,8 @@ export class TodoListPage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.listsService.getLists()
-        .subscribe(lists => {
-          if (Array.isArray(lists)) {
-            lists.filter(list => {
-              if (list.id == params.get('listId')) {
-                this.list = list;
-              }
-            })
-          }
-        })
-    });
+      this.listsService.getList(params.get('listId')).subscribe(list => this.list = list);
+    })
   }
 
   filterUncheckedItems() {
@@ -40,4 +35,5 @@ export class TodoListPage implements OnInit {
   toggleCheckedItems() {
     this.areCheckedItemsShown = !this.areCheckedItemsShown;
   }
+  
 }
