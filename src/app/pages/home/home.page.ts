@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ListsService } from '../../services/lists.service';
+import { ElementTypes } from 'src/app/element-types.enum';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,8 @@ import { ListsService } from '../../services/lists.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  deleteButtonType = ElementTypes.TYPE_LIST
 
   constructor(
     public listsService: ListsService

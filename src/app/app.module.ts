@@ -10,9 +10,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddButtonModule } from './components/add-button/add-button.module';
-import { EditButtonModule } from './components/edit-button/edit-button.module';
-import { HeaderModule } from './components/header/header.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,9 +22,7 @@ import { HeaderModule } from './components/header/header.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AddButtonModule,
-    EditButtonModule,
-    HeaderModule
+    ComponentsModule
   ],
   providers: [
     StatusBar,

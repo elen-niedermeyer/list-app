@@ -31,24 +31,28 @@ export class ListsService {
   getList(docId: string): Observable<ToDoList> {
     return this.listsCollection.doc<ToDoList>(docId).valueChanges().pipe(
       take(1),
-      map((list:ToDoList) => {
+      map((list: ToDoList) => {
         list.docId = docId
         return list
       })
     );
   }
 
-  addList(newList: ToDoList): Promise<boolean> {
+  addList(newList: ToDoList): Promise<string> {
     return this.listsCollection.add(newList)
-      .then(() => { return true; })
-      .catch(() => { return false; })
+      .then(newDoc => { return newDoc.id })
+      .catch(() => { return null })
   }
 
   // TODO: only updates name
   updateList(updatedList: ToDoList): Promise<boolean> {
-    return this.listsCollection.doc(updatedList.docId).update({id: updatedList.id})
+    return this.listsCollection.doc(updatedList.docId).update({ id: updatedList.id })
       .then(() => { return true; })
       .catch(() => { return false; })
+  }
+
+  deleteList(docId: string): Promise<void> {
+    return this.listsCollection.doc(docId).delete();
   }
 
 }

@@ -1,5 +1,6 @@
-<app-header title="{{list.id}}">
+<app-header [title]="list.id">
   <app-edit-button slot="end" [routerLink]="['/edit-list', list.docId]"></app-edit-button>
+  <app-delete-button slot="end" [type]="deleteButtonType" [docId]="list.docId"></app-delete-button>
 </app-header>
 
 <ion-content [fullscreen]="true">

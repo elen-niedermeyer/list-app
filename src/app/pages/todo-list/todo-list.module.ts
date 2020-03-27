@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { EditButtonModule } from 'src/app/components/edit-button/edit-button.module';
-import { HeaderModule } from 'src/app/components/header/header.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 import { TodoListPageRoutingModule } from './todo-list-routing.module';
 import { TodoListPage } from './todo-list.page';
 
@@ -12,8 +11,7 @@ import { TodoListPage } from './todo-list.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    HeaderModule,
-    EditButtonModule,
+    ComponentsModule,
     TodoListPageRoutingModule
   ],
   declarations: [TodoListPage]

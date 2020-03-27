@@ -14,8 +14,9 @@ export class AddListPage {
   constructor(private listsService: ListsService, private router: Router) { }
 
   async submitListForm() {
-    let success = await this.listsService.addList(this.list);
-    if (success) {
+    let newDocId = await this.listsService.addList(this.list);
+    if (newDocId) {
+      this.list.docId = newDocId;
       this.router.navigate(['/lists', this.list.docId]);
     } else {
       // TODO: show error

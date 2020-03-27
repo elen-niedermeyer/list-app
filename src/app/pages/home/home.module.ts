@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { EditButtonModule } from 'src/app/components/edit-button/edit-button.module';
-import { HeaderModule } from 'src/app/components/header/header.module';
-import { AddButtonModule } from '../../components/add-button/add-button.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -13,9 +11,7 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddButtonModule,
-    EditButtonModule,
-    HeaderModule,
+    ComponentsModule,
     RouterModule.forChild([
       {
         path: '',
