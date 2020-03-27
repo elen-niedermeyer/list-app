@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { List } from 'src/app/list';
+import { ToDoList } from 'src/app/list';
 import { ListsService } from 'src/app/services/lists.service';
 import { Router } from '@angular/router';
 
@@ -9,15 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-list.page.scss'],
 })
 export class AddListPage {
-  list: List = { "id": null as string, "items": [] }; /*TODO: Was mache ich hiermit? */
+  list: ToDoList = { "id": null as string, "items": [] } /*TODO: Was mache ich hiermit? */
 
   constructor(private listsService: ListsService, private router: Router) { }
 
   async submitListForm() {
-    console.log(this.list)
     let success = await this.listsService.addList(this.list);
     if (success) {
-      this.router.navigate(['/lists', this.list.id]);
+      this.router.navigate(['/lists', this.list.docId]);
     } else {
       // TODO: show error
       this.router.navigate(['']);

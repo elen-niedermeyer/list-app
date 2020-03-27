@@ -16,15 +16,8 @@ export class TodoListPage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.listsService.lists
-        .subscribe(lists => {
-          lists.filter(list => {
-            if (list.id == params.get('listId')) {
-              this.list = list;
-            }
-          })
-        })
-    });
+      this.listsService.getList(params.get('listId')).subscribe(list => this.list = list);
+    })
   }
 
   filterUncheckedItems() {

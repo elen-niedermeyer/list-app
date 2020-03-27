@@ -1,47 +1,54 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { List } from '../list'; import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
+import { ToDoList } from '../list';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListsService {
-  lists: Observable<Array<List>>;
-  private listsCollection: AngularFirestoreCollection<List>;
+  lists: Observable<Array<ToDoList>>;
+  private listsCollection: AngularFirestoreCollection<ToDoList>;
 
   constructor(private firestore: AngularFirestore) {
     this.updateListsObservable;
   }
 
   updateListsObservable() {
-    this.listsCollection = this.firestore.collection<List>('lists')
+    this.listsCollection = this.firestore.collection<ToDoList>('lists')
     this.lists = this.listsCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data };
+          const data = a.payload.doc.data()
+          const docId = a.payload.doc.id
+          return { docId, ...data }
         });
       })
     );
   }
 
-  // TODO: there could be several
-  /*filterForList(id): List {
-    return lists.filter(list => {
-      if (list.id == id) {
-        return list;
-      }
-    })[0];
-  }*/
+  getList(docId: string): Observable<ToDoList> {
+    return this.listsCollection.doc<ToDoList>(docId).valueChanges().pipe(
+      take(1),
+      map((list:ToDoList) => {
+        list.docId = docId
+        return list
+      })
+    );
+  }
 
-  // TODO: correct post to server
-  addList(newList: List): Promise<boolean> {
+  addList(newList: ToDoList): Promise<boolean> {
     return this.listsCollection.add(newList)
       .then(() => { return true; })
-      .catch(() => { return false; });
+      .catch(() => { return false; })
+  }
+
+  // TODO: only updates name
+  updateList(updatedList: ToDoList): Promise<boolean> {
+    return this.listsCollection.doc(updatedList.docId).update({id: updatedList.id})
+      .then(() => { return true; })
+      .catch(() => { return false; })
   }
 
 }
