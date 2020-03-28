@@ -29,6 +29,7 @@ export class ListsService {
   }
 
   getList(docId: string): Observable<ToDoList> {
+    this.updateListsObservable()
     return this.listsCollection.doc<ToDoList>(docId).valueChanges().pipe(
       take(1),
       map((list: ToDoList) => {
