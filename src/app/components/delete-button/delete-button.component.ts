@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ElementTypes } from 'src/app/element-types.enum';
+import { ErrorAlertService } from 'src/app/services/error-alert.service';
 import { ListsService } from 'src/app/services/lists.service';
 
 @Component({
@@ -13,7 +15,12 @@ export class DeleteButtonComponent {
   @Input() type: ElementTypes
   @Input() docId: string
 
-  constructor(private alertController: AlertController, private listsService: ListsService) { }
+  constructor(
+    private alertController: AlertController,
+    private listsService: ListsService,
+    private errorAlertService: ErrorAlertService,
+    private router: Router
+  ) { }
 
   async deleteElement() {
     const alert = await this.alertController.create({
@@ -23,9 +30,14 @@ export class DeleteButtonComponent {
         'No',
         {
           text: 'Yes',
-          handler: () => {
-            this.listsService.deleteList(this.docId)
-            //TODO route to home
+          handler: async () => {
+            let res = await this.listsService.deleteList(this.docId)
+            if (res.result) {
+              this.router.navigate([''])
+            } else {
+              // an error appeared
+              this.errorAlertService.showErrorAlert(res.data);
+            }
           }
         }]
     })

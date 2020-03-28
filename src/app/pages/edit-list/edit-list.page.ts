@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToDoList } from 'src/app/list';
+import { ErrorAlertService } from 'src/app/services/error-alert.service';
 import { ListsService } from 'src/app/services/lists.service';
 
 @Component({
@@ -11,7 +12,12 @@ import { ListsService } from 'src/app/services/lists.service';
 export class EditListPage {
   list: ToDoList = { "id": null as string, "items": [] } /*TODO: Was mache ich hiermit? */
 
-  constructor(private listsService: ListsService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private listsService: ListsService,
+    private errorAlertService: ErrorAlertService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -20,12 +26,12 @@ export class EditListPage {
   }
 
   async updateListForm() {
-    let success = await this.listsService.updateList(this.list)
-    if (success) {
+    let res = await this.listsService.updateList(this.list)
+    if (res.result) {
       this.router.navigate(['/lists', this.list.docId])
     } else {
-      // TODO: show error
-      this.router.navigate([''])
+      // an error appeared
+      this.errorAlertService.showErrorAlert(res.data);
     }
   }
 

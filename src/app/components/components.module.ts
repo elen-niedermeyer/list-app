@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { AddButtonComponent } from './add-button/add-button.component';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
@@ -19,7 +20,8 @@ import { HomeButtonComponent } from './home-button/home-button.component';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
+    IonicModule,
+    RouterModule
   ],
   exports: [
     AddButtonComponent,

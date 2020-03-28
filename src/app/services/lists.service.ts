@@ -4,6 +4,11 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ToDoList } from '../list';
 
+export interface Response {
+  result: boolean,
+  data: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +34,7 @@ export class ListsService {
   }
 
   getList(docId: string): Observable<ToDoList> {
+    this.updateListsObservable()
     return this.listsCollection.doc<ToDoList>(docId).valueChanges().pipe(
       take(1),
       map((list: ToDoList) => {
@@ -38,21 +44,23 @@ export class ListsService {
     );
   }
 
-  addList(newList: ToDoList): Promise<string> {
+  addList(newList: ToDoList): Promise<Response> {
     return this.listsCollection.add(newList)
-      .then(newDoc => { return newDoc.id })
-      .catch(() => { return null })
+      .then(newDoc => { return { result: true, data: newDoc.id } })
+      .catch(error => { return { result: false, data: error } })
   }
 
   // TODO: only updates name
-  updateList(updatedList: ToDoList): Promise<boolean> {
+  updateList(updatedList: ToDoList): Promise<Response> {
     return this.listsCollection.doc(updatedList.docId).update({ id: updatedList.id })
-      .then(() => { return true; })
-      .catch(() => { return false; })
+      .then(() => { return { result: true, data: null } })
+      .catch(error => { return { result: false, data: error } })
   }
 
-  deleteList(docId: string): Promise<void> {
-    return this.listsCollection.doc(docId).delete();
+  deleteList(docId: string): Promise<Response> {
+    return this.listsCollection.doc(docId).delete()
+      .then(() => { return { result: true, data: null } })
+      .catch(error => { return { result: false, data: error } })
   }
 
 }

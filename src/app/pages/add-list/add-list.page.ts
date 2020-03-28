@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ToDoList } from 'src/app/list';
 import { ListsService } from 'src/app/services/lists.service';
 import { Router } from '@angular/router';
+import { ErrorAlertService } from 'src/app/services/error-alert.service';
 
 @Component({
   selector: 'app-add-list',
@@ -11,16 +12,20 @@ import { Router } from '@angular/router';
 export class AddListPage {
   list: ToDoList = { "id": null as string, "items": [] } /*TODO: Was mache ich hiermit? */
 
-  constructor(private listsService: ListsService, private router: Router) { }
+  constructor(
+    private listsService: ListsService,
+    private errorAlertService: ErrorAlertService,
+    private router: Router
+  ) { }
 
   async submitListForm() {
-    let newDocId = await this.listsService.addList(this.list);
-    if (newDocId) {
-      this.list.docId = newDocId;
+    let res = await this.listsService.addList(this.list);
+    if (res.result) {
+      this.list.docId = res.data;
       this.router.navigate(['/lists', this.list.docId]);
     } else {
-      // TODO: show error
-      this.router.navigate(['']);
+      // an error appeared
+      this.errorAlertService.showErrorAlert(res.data);
     }
   }
 
