@@ -46,7 +46,7 @@ export class AddListPage {
   }
 
   addItem() {
-    this.list.items.push(emptyItem)
+    this.list.items.push({ ...emptyItem })
   }
 
   removeItem(index) {
