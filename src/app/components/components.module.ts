@@ -8,6 +8,7 @@ import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { EditButtonComponent } from './edit-button/edit-button.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeButtonComponent } from './home-button/home-button.component';
+import { RemoveButtonComponent } from './remove-button/remove-button.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HomeButtonComponent } from './home-button/home-button.component';
     DeleteButtonComponent,
     EditButtonComponent,
     HeaderComponent,
-    HomeButtonComponent
+    HomeButtonComponent,
+    RemoveButtonComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { HomeButtonComponent } from './home-button/home-button.component';
     DeleteButtonComponent,
     EditButtonComponent,
     HeaderComponent,
-    HomeButtonComponent
+    HomeButtonComponent,
+    RemoveButtonComponent
   ]
 })
 export class ComponentsModule { }

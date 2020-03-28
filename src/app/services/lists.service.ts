@@ -3,8 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ToDoList } from '../list';
-import {Response} from '../response';
- 
+import { Response } from '../response';
+
 @Injectable({
   providedIn: 'root'
 })
