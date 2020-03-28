@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ToDoList } from '../list';
+import { ItemsService } from './items.service';
 
 export interface Response {
   result: boolean,
@@ -27,7 +28,7 @@ export class ListsService {
         return actions.map(a => {
           const data = a.payload.doc.data()
           const docId = a.payload.doc.id
-          return { docId, ...data }
+          return { docId, ...data, items: [] }
         });
       })
     );
@@ -52,7 +53,7 @@ export class ListsService {
 
   // TODO: only updates name
   updateList(updatedList: ToDoList): Promise<Response> {
-    return this.listsCollection.doc(updatedList.docId).update({ id: updatedList.id })
+    return this.listsCollection.doc(updatedList.docId).update({ name: updatedList.name })
       .then(() => { return { result: true, data: null } })
       .catch(error => { return { result: false, data: error } })
   }

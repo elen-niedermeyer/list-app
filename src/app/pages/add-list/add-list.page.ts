@@ -10,7 +10,7 @@ import { ErrorAlertService } from 'src/app/services/error-alert.service';
   styleUrls: ['./add-list.page.scss'],
 })
 export class AddListPage {
-  list: ToDoList = { "id": null as string, "items": [] } /*TODO: Was mache ich hiermit? */
+  list: ToDoList = { docId: "", name: null as string, items: [] } /*TODO: Was mache ich hiermit? */
 
   constructor(
     private listsService: ListsService,

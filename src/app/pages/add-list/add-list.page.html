@@ -4,8 +4,8 @@
   <form (ngSubmit)="submitListForm()">
     <ion-item>
       <ion-label>Name</ion-label>
-      <ion-input type="text" [(ngModel)]="list.id" name="id"></ion-input>
+      <ion-input type="text" [(ngModel)]="list.name" name="list_name"></ion-input>
     </ion-item>
-    <ion-button [disabled]="!list.id" type="submit">Create list</ion-button>
+    <ion-button [disabled]="!list.name" type="submit">Create list</ion-button>
   </form>
 </ion-content>
