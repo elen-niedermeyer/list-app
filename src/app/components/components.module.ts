@@ -8,6 +8,7 @@ import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { EditButtonComponent } from './edit-button/edit-button.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeButtonComponent } from './home-button/home-button.component';
+import { ItemInListComponent } from './item-in-list/item-in-list.component';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { RemoveButtonComponent } from './remove-button/remove-button.component';
     EditButtonComponent,
     HeaderComponent,
     HomeButtonComponent,
+    ItemInListComponent,
     RemoveButtonComponent
   ],
   imports: [
@@ -31,6 +33,7 @@ import { RemoveButtonComponent } from './remove-button/remove-button.component';
     EditButtonComponent,
     HeaderComponent,
     HomeButtonComponent,
+    ItemInListComponent,
     RemoveButtonComponent
   ]
 })

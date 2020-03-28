@@ -13,10 +13,7 @@
   </ion-header>
 
   <ion-list>
-    <ion-item *ngFor="let item of filterUncheckedItems()">
-      <ion-checkbox [checked]=item.completed></ion-checkbox>
-      <ion-label>{{item.name}}</ion-label>
-    </ion-item>
+    <app-item-in-list *ngFor="let item of filterUncheckedItems()" [item]="item"></app-item-in-list>
   </ion-list>
 
   <div (click)="toggleCheckedItems()">
@@ -24,10 +21,7 @@
     Checked items
   </div>
   <ion-list *ngIf="areCheckedItemsShown">
-    <ion-item *ngFor="let item of filterCheckedItems()">
-      <ion-checkbox [checked]=item.completed></ion-checkbox>
-      <ion-label>{{item.name}}</ion-label>
-    </ion-item>
+    <app-item-in-list *ngFor="let item of filterCheckedItems()" [item]="item"></app-item-in-list>
   </ion-list>
 
 </ion-content>
