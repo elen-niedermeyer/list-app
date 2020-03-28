@@ -3,13 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ToDoList } from '../list';
-import { ItemsService } from './items.service';
-
-export interface Response {
-  result: boolean,
-  data: string
-}
-
+import {Response} from '../response';
+ 
 @Injectable({
   providedIn: 'root'
 })

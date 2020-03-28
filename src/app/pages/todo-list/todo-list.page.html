@@ -14,8 +14,8 @@
 
   <ion-list>
     <ion-item *ngFor="let item of filterUncheckedItems()">
-      <ion-checkbox checked={{item.checked}}></ion-checkbox>
-      <ion-label>{{item.id}}</ion-label>
+      <ion-checkbox [checked]=item.completed></ion-checkbox>
+      <ion-label>{{item.name}}</ion-label>
     </ion-item>
   </ion-list>
 
@@ -25,8 +25,8 @@
   </div>
   <ion-list *ngIf="areCheckedItemsShown">
     <ion-item *ngFor="let item of filterCheckedItems()">
-      <ion-checkbox checked={{item.checked}}></ion-checkbox>
-      <ion-label>{{item.id}}</ion-label>
+      <ion-checkbox [checked]=item.completed></ion-checkbox>
+      <ion-label>{{item.name}}</ion-label>
     </ion-item>
   </ion-list>
 
