@@ -1,9 +1,9 @@
 export interface ToDoItem {
-    docId: string,
+    docId?: string,
     name: string,
-    creation_date: Date,
+    creation_date: string, // ISO format
     completed: boolean,
-    completed_date?: Date,
-    due_date?: Date,
+    completed_date?: string, // ISO format
+    due_date?: string, // ISO format
     note?: string
 }

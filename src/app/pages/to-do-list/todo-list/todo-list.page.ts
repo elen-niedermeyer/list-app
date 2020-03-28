@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ElementTypes } from 'src/app/element-types.enum';
+import { ToDoList } from 'src/app/list';
 import { ItemsService } from 'src/app/services/items.service';
-import { ListsService } from '../../services/lists.service';
+import { ListsService } from '../../../services/lists.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,7 +14,7 @@ export class TodoListPage implements OnInit {
 
   deleteButtonType = ElementTypes.TYPE_LIST
 
-  list = { docId: "", name: "", items: [] }; /*TODO: was mache ich damit?*/
+  list: ToDoList = { name: "", items: [] }; /*TODO: was mache ich damit?*/
 
   areCheckedItemsShown: boolean = false;
 
@@ -35,11 +36,11 @@ export class TodoListPage implements OnInit {
   }
 
   filterUncheckedItems() {
-    return this.list.items.filter(item => { return !item.checked; });
+    return this.list.items.filter(item => { return !item.completed; });
   }
 
   filterCheckedItems() {
-    return this.list.items.filter(item => { return item.checked; });
+    return this.list.items.filter(item => { return item.completed; });
   }
 
   toggleCheckedItems() {

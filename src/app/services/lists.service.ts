@@ -23,7 +23,7 @@ export class ListsService {
         return actions.map(a => {
           const data = a.payload.doc.data()
           const docId = a.payload.doc.id
-          return { docId, ...data, items: [] }
+          return { docId, ...data }
         });
       })
     );

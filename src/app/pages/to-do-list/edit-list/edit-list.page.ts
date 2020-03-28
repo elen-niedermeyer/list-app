@@ -10,7 +10,7 @@ import { ListsService } from 'src/app/services/lists.service';
   styleUrls: ['./edit-list.page.scss'],
 })
 export class EditListPage {
-  list: ToDoList = { docId: "", name: null as string, items: [] } /*TODO: Was mache ich hiermit? */
+  list: ToDoList = { name: null as string, items: [] } /*TODO: Was mache ich hiermit? */
 
   constructor(
     private listsService: ListsService,

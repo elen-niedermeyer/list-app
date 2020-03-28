@@ -6,7 +6,7 @@ import { ErrorAlertService } from 'src/app/services/error-alert.service';
 import { ItemsService } from 'src/app/services/items.service';
 import { ListsService } from 'src/app/services/lists.service';
 
-const emptyItem: ToDoItem = { docId: "", name: null, creation_date: new Date(), completed: false, completed_date: null, due_date: null, note: null }; /*TODO: was mache ich damit?*/
+const emptyItem: ToDoItem = { name: null, creation_date: new Date().toISOString(), completed: false, completed_date: null, due_date: null, note: null }; /*TODO: was mache ich damit?*/
 
 @Component({
   selector: 'app-add-list',
@@ -15,7 +15,7 @@ const emptyItem: ToDoItem = { docId: "", name: null, creation_date: new Date(), 
 })
 export class AddListPage {
 
-  list: ToDoList = { docId: "", name: null as string, items: [] } /*TODO: Was mache ich hiermit? */
+  list: ToDoList = { name: null as string, items: [] } /*TODO: Was mache ich hiermit? */
 
   constructor(
     private listsService: ListsService,

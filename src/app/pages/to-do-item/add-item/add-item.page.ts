@@ -12,7 +12,7 @@ import { ItemsService } from 'src/app/services/items.service';
 export class AddItemPage implements OnInit {
 
   listDocId;
-  item: ToDoItem = { docId: "", name: null, creation_date: new Date(), completed: false, completed_date: null, due_date: null, note: null }; /*TODO: was mache ich damit?*/
+  item: ToDoItem = { name: null, creation_date: new Date().toISOString(), completed: false, completed_date: null, due_date: null, note: null }; /*TODO: was mache ich damit?*/
 
   constructor(
     private itemsService: ItemsService,
@@ -34,10 +34,6 @@ export class AddItemPage implements OnInit {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);
     }
-  }
-
-  updateDueDate(dateChangeEvent) {
-    this.item.due_date = new Date(dateChangeEvent.detail.value);
   }
 
 }
