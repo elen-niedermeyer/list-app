@@ -1,5 +1,5 @@
 <app-header [title]="item.name">
-  <ion-checkbox slot="start" [(ngModel)]="item.completed"></ion-checkbox>
+  <ion-checkbox slot="start" [(ngModel)]="item.completed" (ionChange)="itemsService.updateCompleted(listDocId, item)"></ion-checkbox>
 </app-header>
 
 <ion-content [fullscreen]="true">

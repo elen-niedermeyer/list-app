@@ -10,6 +10,7 @@ import { ItemsService } from 'src/app/services/items.service';
 })
 export class ItemPage implements OnInit {
 
+  listDocId: string
   item: ToDoItem = {
     name: "",
     creation_date: "",
@@ -20,11 +21,14 @@ export class ItemPage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.itemsService.getItem(params.get('listId'), params.get('itemId'))
+      this.listDocId = params.get('listId')
+      this.itemsService.getItem(this.listDocId, params.get('itemId'))
         .subscribe(item => {
           this.item = item
         })
     })
   }
+
+  /*TODO handle error when updating completed value (see template) */
 
 }
