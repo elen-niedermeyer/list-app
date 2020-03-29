@@ -1,6 +1,6 @@
 <ion-item>
   <ion-checkbox [checked]=item.completed></ion-checkbox>
-  <ion-label>{{item.name}}</ion-label>
+  <ion-label [routerLink]="['/item', listDocId, item.docId]">{{item.name}}</ion-label>
   <ion-icon *ngIf="item.due_date" name="calendar"></ion-icon>
   <ion-datetime *ngIf="item.due_date" [value]="item.due_date" disabled></ion-datetime>
 </ion-item>

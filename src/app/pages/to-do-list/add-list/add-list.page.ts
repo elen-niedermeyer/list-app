@@ -38,7 +38,7 @@ export class AddListPage {
         }
       })
 
-      this.router.navigate(['/lists', this.list.docId]);
+      this.router.navigate(['/list', this.list.docId]);
     } else {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);

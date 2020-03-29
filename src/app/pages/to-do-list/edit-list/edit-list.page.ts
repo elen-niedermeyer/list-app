@@ -28,7 +28,7 @@ export class EditListPage {
   async updateListForm() {
     let res = await this.listsService.updateList(this.list)
     if (res.result) {
-      this.router.navigate(['/lists', this.list.docId])
+      this.router.navigate(['/list', this.list.docId])
     } else {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);

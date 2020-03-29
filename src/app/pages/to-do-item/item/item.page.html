@@ -1,0 +1,19 @@
+<app-header [title]="item.name">
+  <ion-checkbox slot="start" [(ngModel)]="item.completed"></ion-checkbox>
+</app-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{item.name}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  Due until:
+  <ion-datetime *ngIf="item.due_date" [value]="item.due_date" disabled></ion-datetime>
+
+  Note:<br>
+  <ion-text *ngIf="item.note">{{item.note}}</ion-text>
+
+</ion-content>

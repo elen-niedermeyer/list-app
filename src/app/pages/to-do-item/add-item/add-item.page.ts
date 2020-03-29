@@ -29,7 +29,7 @@ export class AddItemPage implements OnInit {
   async submitItemForm() {
     let res = await this.itemsService.addItemToList(this.listDocId, this.item);
     if (res.result) {
-      this.router.navigate(['/lists', this.listDocId]);
+      this.router.navigate(['/list', this.listDocId]);
     } else {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);

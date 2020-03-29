@@ -8,6 +8,7 @@ import { ToDoItem } from 'src/app/item';
 })
 export class ItemInListComponent {
 
+  @Input() listDocId: string
   @Input() item: ToDoItem
 
   constructor() { }

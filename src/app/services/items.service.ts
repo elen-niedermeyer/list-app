@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { ToDoItem } from '../item';
 import { Response } from '../response';
 
@@ -23,6 +23,19 @@ export class ItemsService {
         })
       })
     )
+  }
+
+  getItem(listDocId: string, itemDocId: string): Observable<ToDoItem> {
+    let itemsCollection = this.firestore.collection<ToDoItem>('lists/' + listDocId + '/items')
+    return itemsCollection.doc<ToDoItem>(itemDocId)
+      .valueChanges()
+      .pipe(
+        take(1),
+        map((item: ToDoItem) => {
+          item.docId = itemDocId
+          return item
+        })
+      );
   }
 
   addItemToList(listDocId: string, newItem: ToDoItem): Promise<Response> {
