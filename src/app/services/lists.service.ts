@@ -3,11 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ToDoList } from '../list';
-
-export interface Response {
-  result: boolean,
-  data: string
-}
+import { Response } from '../response';
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +48,7 @@ export class ListsService {
 
   // TODO: only updates name
   updateList(updatedList: ToDoList): Promise<Response> {
-    return this.listsCollection.doc(updatedList.docId).update({ id: updatedList.id })
+    return this.listsCollection.doc(updatedList.docId).update({ name: updatedList.name })
       .then(() => { return { result: true, data: null } })
       .catch(error => { return { result: false, data: error } })
   }

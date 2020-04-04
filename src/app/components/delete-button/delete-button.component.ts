@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ElementTypes } from 'src/app/element-types.enum';
 import { ErrorAlertService } from 'src/app/services/error-alert.service';
+import { ItemsService } from 'src/app/services/items.service';
 import { ListsService } from 'src/app/services/lists.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class DeleteButtonComponent {
   constructor(
     private alertController: AlertController,
     private listsService: ListsService,
+    private itemsService: ItemsService,
     private errorAlertService: ErrorAlertService,
     private router: Router
   ) { }
@@ -31,18 +33,40 @@ export class DeleteButtonComponent {
         {
           text: 'Yes',
           handler: async () => {
-            let res = await this.listsService.deleteList(this.docId)
-            if (res.result) {
-              this.router.navigate([''])
+            if (this.type === ElementTypes.TYPE_LIST) {
+              this.handleListDeletion()
+            } else if (this.type === ElementTypes.TYPE_ITEM) {
+              this.handleItemDeletion()
             } else {
-              // an error appeared
-              this.errorAlertService.showErrorAlert(res.data);
+              // res not initialized
+              this.errorAlertService.showErrorAlert('Unallowed element to delete')
             }
+
           }
         }]
     })
 
     await alert.present()
+  }
+
+  private async handleListDeletion() {
+    let res = await this.listsService.deleteList(this.docId)
+    if (res.result) {
+      this.router.navigate([''])
+    } else {
+      // an error appeared
+      this.errorAlertService.showErrorAlert(res.data);
+    }
+  }
+
+  private async handleItemDeletion() {
+    let res = await this.itemsService.deleteItem(this.docId)
+    if (res.result) {
+      this.router.navigate(['']) /* TODO */
+    } else {
+      // an error appeared
+      this.errorAlertService.showErrorAlert(res.data);
+    }
   }
 
 }

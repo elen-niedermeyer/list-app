@@ -10,7 +10,7 @@ import { ListsService } from 'src/app/services/lists.service';
   styleUrls: ['./edit-list.page.scss'],
 })
 export class EditListPage {
-  list: ToDoList = { "id": null as string, "items": [] } /*TODO: Was mache ich hiermit? */
+  list: ToDoList = { name: null as string, items: [] } /*TODO: Was mache ich hiermit? */
 
   constructor(
     private listsService: ListsService,
@@ -28,7 +28,7 @@ export class EditListPage {
   async updateListForm() {
     let res = await this.listsService.updateList(this.list)
     if (res.result) {
-      this.router.navigate(['/lists', this.list.docId])
+      this.router.navigate(['/list', this.list.docId])
     } else {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);

@@ -6,7 +6,8 @@
 
   <ion-list>
     <ion-item *ngFor="let list of listsService.lists | async">
-      <ion-label [routerLink]="['/lists', list.docId]">{{list.id}}</ion-label>
+      <ion-label [routerLink]="['/list', list.docId]">{{list.name}}</ion-label>
+      <app-add-button slot="end" [routerLink]="['/add-item', list.docId]"></app-add-button>
       <app-edit-button slot="end" [routerLink]="['/edit-list', list.docId]"></app-edit-button>
       <app-delete-button slot="end" [type]="deleteButtonType" [docId]="list.docId"></app-delete-button>
     </ion-item>
