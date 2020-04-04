@@ -15,7 +15,11 @@ const emptyItem: ToDoItem = { name: null, creation_date: new Date().toISOString(
 })
 export class AddListPage {
 
-  list: ToDoList = { name: null as string, items: [] } /*TODO: Was mache ich hiermit? */
+  list: ToDoList = { 
+    name: null as string, 
+    creation_date: new Date().toISOString(), 
+    items: []
+  } /*TODO: Was mache ich hiermit? */
 
   constructor(
     private listsService: ListsService,
