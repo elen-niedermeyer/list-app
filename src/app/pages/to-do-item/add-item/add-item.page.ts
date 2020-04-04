@@ -27,7 +27,7 @@ export class AddItemPage implements OnInit {
   }
 
   async submitItemForm() {
-    let res = await this.itemsService.addItemToList(this.listDocId, this.item);
+    let res = await this.itemsService.addItem(this.listDocId, this.item);
     if (res.result) {
       this.router.navigate(['/list', this.listDocId]);
     } else {

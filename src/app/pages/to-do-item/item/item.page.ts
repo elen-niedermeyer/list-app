@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToDoItem } from 'src/app/item';
 import { ItemsService } from 'src/app/services/items.service';
+import { ElementTypes } from 'src/app/element-types.enum';
 
 @Component({
   selector: 'app-item',
@@ -17,6 +18,9 @@ export class ItemPage implements OnInit {
     completed: false,
   } /*TODO*/
 
+  docPath: string
+  deleteButtonType = ElementTypes.TYPE_ITEM
+
   constructor(private itemsService: ItemsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,6 +29,7 @@ export class ItemPage implements OnInit {
       this.itemsService.getItem(this.listDocId, params.get('itemId'))
         .subscribe(item => {
           this.item = item
+          this.docPath = 'lists/' + this.listDocId + '/items/' + this.item.docId
         })
     })
   }

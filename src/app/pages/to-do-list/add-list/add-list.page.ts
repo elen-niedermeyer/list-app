@@ -34,7 +34,7 @@ export class AddListPage {
       // add items without error handling because the list is already created
       items.forEach(item => {
         if (item.name) {
-          this.itemsSevice.addItemToList(this.list.docId, item)
+          this.itemsSevice.addItem(this.list.docId, item)
         }
       })
 

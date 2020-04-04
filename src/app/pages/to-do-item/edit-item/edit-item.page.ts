@@ -28,7 +28,10 @@ export class EditItemPage implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.listDocId = params.get('listId')
-      this.itemsService.getItem(this.listDocId, params.get('itemId')).subscribe(item => this.item = item);
+      this.itemsService.getItem(this.listDocId, params.get('itemId'))
+        .subscribe(item => {
+          this.item = item
+        })
     })
   }
 

@@ -4,4 +4,5 @@
   <ion-icon *ngIf="item.due_date" name="calendar"></ion-icon>
   <ion-datetime *ngIf="item.due_date" [value]="item.due_date" disabled></ion-datetime>
   <app-edit-button slot="end" [routerLink]="['/edit-item', listDocId, item.docId]"></app-edit-button>
+  <app-delete-button slot="end" [type]="deleteButtonType" [docId]="docPath"></app-delete-button>
 </div> <!-- TODO can use ion-item?-->
