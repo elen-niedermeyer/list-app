@@ -1,0 +1,19 @@
+<app-header title="Edit Item"></app-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="submitUpdateItemForm()">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="item.name" name="item_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Due Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="item.due_date" name="item_due"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Note</ion-label>
+      <ion-input type="text" [(ngModel)]="item.note" name="item_note"></ion-input>
+    </ion-item>
+    <ion-button [disabled]="!item.name" type="submit">Update item</ion-button>
+  </form>
+</ion-content>

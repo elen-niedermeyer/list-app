@@ -45,7 +45,14 @@ export class ItemsService {
       .catch(error => { return { result: false, data: error } })
   }
 
-  updateCompleted(listDocId: string, item: ToDoItem): Promise<Response> {
+  update(listDocId: string, item: ToDoItem): Promise<Response> {
+    let itemsCollection = this.firestore.collection<ToDoItem>('lists/' + listDocId + '/items')
+    return itemsCollection.doc(item.docId).update({ name: item.name, due_date: item.due_date, note: item.note })
+      .then(() => { return { result: true, data: null } })
+      .catch(error => { return { result: false, data: error } })
+  }
+
+  updateCompletedProperty(listDocId: string, item: ToDoItem): Promise<Response> {
     if (item.completed) {
       item.completed_date = new Date().toISOString()
     }

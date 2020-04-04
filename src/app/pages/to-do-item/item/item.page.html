@@ -1,5 +1,6 @@
 <app-header [title]="item.name">
   <ion-checkbox slot="start" [(ngModel)]="item.completed" (ionChange)="itemsService.updateCompleted(listDocId, item)"></ion-checkbox>
+  <app-edit-button slot="end" [routerLink]="['/edit-item', listDocId, item.docId]"></app-edit-button>
 </app-header>
 
 <ion-content [fullscreen]="true">

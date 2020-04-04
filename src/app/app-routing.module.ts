@@ -7,8 +7,9 @@ const routes: Routes = [
   { path: 'list/:listId', loadChildren: () => import('./pages/to-do-list/todo-list/todo-list.module').then(m => m.TodoListPageModule) },
   { path: 'add-list', loadChildren: () => import('./pages/to-do-list/add-list/add-list.module').then(m => m.AddListPageModule) },
   { path: 'edit-list/:listId', loadChildren: () => import('./pages/to-do-list/edit-list/edit-list.module').then(m => m.EditListPageModule) },
+  { path: 'item/:listId/:itemId', loadChildren: () => import('./pages/to-do-item/item/item.module').then(m => m.ItemPageModule) },
   { path: 'add-item/:listId', loadChildren: () => import('./pages/to-do-item/add-item/add-item.module').then(m => m.AddItemPageModule) },
-  { path: 'item/:listId/:itemId', loadChildren: () => import('./pages/to-do-item/item/item.module').then( m => m.ItemPageModule)}
+  { path: 'edit-item/:listId/:itemId', loadChildren: () => import('./pages/to-do-item/edit-item/edit-item.module').then(m => m.EditItemPageModule) }
 ];
 
 @NgModule({
