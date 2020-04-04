@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToDoItem } from 'src/app/item';
 import { ItemsService } from 'src/app/services/items.service';
+import { ErrorAlertService } from 'src/app/services/error-alert.service';
 
 @Component({
   selector: 'app-edit-item',
@@ -19,7 +20,9 @@ export class EditItemPage implements OnInit {
 
   constructor(
     private itemsService: ItemsService,
-    private route: ActivatedRoute
+    private errorAlertService: ErrorAlertService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -29,8 +32,14 @@ export class EditItemPage implements OnInit {
     })
   }
 
-  submitUpdateItemForm() {
-    this.itemsService.update(this.listDocId, this.item)
+  async submitUpdateItemForm() {
+    let res = await this.itemsService.updateItem(this.listDocId, this.item)
+    if (res.result) {
+      this.router.navigate(['/item', this.listDocId, this.item.docId])
+    } else {
+      // an error appeared
+      this.errorAlertService.showErrorAlert(res.data);
+    }
   }
 
 }
