@@ -14,7 +14,11 @@ export class TodoListPage implements OnInit {
 
   deleteButtonType = ElementTypes.TYPE_LIST
 
-  list: ToDoList = { name: "", items: [] }; /*TODO: was mache ich damit?*/
+  list: ToDoList = {
+    name: "",
+    creation_date: null,
+    items: []
+  }; /*TODO: was mache ich damit?*/
 
   areCheckedItemsShown: boolean = false;
 
