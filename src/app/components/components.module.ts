@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { HomeButtonComponent } from './home-button/home-button.component';
 import { ItemInListComponent } from './item-in-list/item-in-list.component';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
+import { SettingsButtonComponent } from './settings-button/settings-button.component';
+import { SettingsToDoListComponent } from './settings-to-do-list/settings-to-do-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { RemoveButtonComponent } from './remove-button/remove-button.component';
     HeaderComponent,
     HomeButtonComponent,
     ItemInListComponent,
-    RemoveButtonComponent
+    RemoveButtonComponent,
+    SettingsButtonComponent,
+    SettingsToDoListComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,9 @@ import { RemoveButtonComponent } from './remove-button/remove-button.component';
     HeaderComponent,
     HomeButtonComponent,
     ItemInListComponent,
-    RemoveButtonComponent
+    RemoveButtonComponent,
+    SettingsButtonComponent,
+    SettingsToDoListComponent
   ]
 })
 export class ComponentsModule { }

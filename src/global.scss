@@ -24,3 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.list-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-bottom: 1px solid var(--ion-color-medium);
+    padding: 10px;
+
+    ion-label {
+        flex-grow: 1; 
+        color: black;
+    }
+
+    ion-label:hover, ion-label:active {
+        color: var(--ion-color-primary)
+    }
+}
