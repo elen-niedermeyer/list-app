@@ -2,14 +2,14 @@
 
 <ion-content [fullscreen]="true">
   <form (ngSubmit)="submitListForm()">
-    <ion-item>
+    <div class="list-row">
       <ion-label>Name</ion-label>
       <ion-input type="text" [(ngModel)]="list.name" name="list_name"></ion-input>
-    </ion-item>
-    <ion-item>
+    </div>
+    <div class="list-row" style="justify-content: space-between;">
       <ion-label>Items</ion-label>
-      <app-add-button slot="end" (click)="addItem()"></app-add-button>
-    </ion-item>
+      <app-add-button (click)="addItem()"></app-add-button>
+    </div>
     <ion-list>
       <ion-item *ngFor="let item of list.items; index as i">
         <ion-input type="text" [(ngModel)]="item.name" name="item_{{i}}"></ion-input>

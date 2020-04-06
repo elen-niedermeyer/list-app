@@ -51,6 +51,10 @@
     }
 
     ion-label {
+        color: black;
+    }
+
+    ion-label.label-clickable {
         flex-grow: 1; 
         color: black;
     }
