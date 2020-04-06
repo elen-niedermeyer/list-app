@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { AddButtonComponent } from './add-button/add-button.component';
+import { AddFabComponent } from './add-fab/add-fab.component';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { EditButtonComponent } from './edit-button/edit-button.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +17,7 @@ import { SettingsToDoListComponent } from './settings-to-do-list/settings-to-do-
 @NgModule({
   declarations: [
     AddButtonComponent,
+    AddFabComponent,
     DeleteButtonComponent,
     EditButtonComponent,
     HeaderComponent,
@@ -33,6 +35,7 @@ import { SettingsToDoListComponent } from './settings-to-do-list/settings-to-do-
   ],
   exports: [
     AddButtonComponent,
+    AddFabComponent,
     DeleteButtonComponent,
     EditButtonComponent,
     HeaderComponent,

@@ -1,8 +1,7 @@
-<app-header title="Lists">
-  <app-add-button slot="end" routerLink="/add-list"></app-add-button>
-</app-header>
+<app-header title="Lists"></app-header>
 
 <ion-content [fullscreen]="true">
+  <app-add-fab routerLink="/add-list"></app-add-fab>
 
   <ion-list>
     <div class="list-row" *ngFor="let list of listsService.lists | async">
