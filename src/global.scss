@@ -25,6 +25,17 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.row-flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 5px;
+    
+    * {
+        margin: 3px;
+    }
+}
+
 .list-row {
     width: 100%;
     display: flex;
@@ -34,12 +45,20 @@
     border-bottom: 1px solid var(--ion-color-medium);
     padding: 10px;
 
+    * {
+        margin: 3px;
+    }
+
     ion-label {
         flex-grow: 1; 
         color: black;
     }
 
-    ion-label:hover, ion-label:active {
-        color: var(--ion-color-primary)
+    ion-label:hover.label-clickable, ion-label:active.label-clickable {
+        color: var(--ion-color-primary);
     }
+}
+
+.option-menu-list {
+    padding: 0;
 }

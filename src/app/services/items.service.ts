@@ -63,8 +63,8 @@ export class ItemsService {
       .catch(error => { return { result: false, data: error } })
   }
 
-  deleteItem(docId: string): Promise<Response> {
-    return this.firestore.doc(docId).delete()
+  deleteItem(listDocId: string, itemDocId: string): Promise<Response> {
+    return this.firestore.doc('lists/' + listDocId + '/items/' + itemDocId).delete()
       .then(() => { return { result: true, data: null } })
       .catch(error => { return { result: false, data: error } })
   }

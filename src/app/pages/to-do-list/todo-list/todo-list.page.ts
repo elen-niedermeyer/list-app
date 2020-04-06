@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { SettingsToDoListComponent } from 'src/app/components/settings-to-do-list/settings-to-do-list.component';
-import { ElementTypes } from 'src/app/element-types.enum';
 import { ToDoList } from 'src/app/list';
 import { ItemsService } from 'src/app/services/items.service';
 import { ListsService } from '../../../services/lists.service';
@@ -13,8 +12,6 @@ import { ListsService } from '../../../services/lists.service';
   styleUrls: ['./todo-list.page.scss'],
 })
 export class TodoListPage implements OnInit {
-
-  deleteButtonType = ElementTypes.TYPE_LIST
 
   list: ToDoList = {
     name: "",
@@ -50,15 +47,15 @@ export class TodoListPage implements OnInit {
     return this.list.items.filter(item => { return item.completed; });
   }
 
-  toggleCheckedItems() {
+  toggleShowCheckedItems() {
     this.areCheckedItemsShown = !this.areCheckedItemsShown;
   }
 
-  async showListSettingsPopover(event, listDocId) {
+  async showListSettingsPopover(event) {
     const popover = await this.popoverController.create({
       component: SettingsToDoListComponent,
       event: event,
-      componentProps: { docId: listDocId }
+      componentProps: { docId: this.list.docId }
     })
 
     return await popover.present()

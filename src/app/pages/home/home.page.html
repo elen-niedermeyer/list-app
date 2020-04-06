@@ -5,7 +5,7 @@
 
   <ion-list>
     <div class="list-row" *ngFor="let list of listsService.lists | async">
-      <ion-label tappable [routerLink]="['/list', list.docId]">{{list.name}}</ion-label>
+      <ion-label class="label-clickable" tappable [routerLink]="['/list', list.docId]">{{list.name}}</ion-label>
       <app-settings-button (click)="showListSettingsPopover($event, list.docId)"></app-settings-button>
     </div>
   </ion-list>

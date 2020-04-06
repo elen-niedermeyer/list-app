@@ -12,10 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { SettingsToDoListComponent } from './components/settings-to-do-list/settings-to-do-list.component';
+import { SettingsToDoItemComponent } from './components/settings-to-do-item/settings-to-do-item.component';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [SettingsToDoListComponent],
+  entryComponents: [
+    SettingsToDoListComponent, 
+    SettingsToDoItemComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
