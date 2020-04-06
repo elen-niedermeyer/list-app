@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { SettingsToDoListComponent } from 'src/app/components/settings-to-do-list/settings-to-do-list.component';
 import { ElementTypes } from 'src/app/element-types.enum';
 import { ToDoList } from 'src/app/list';
 import { ItemsService } from 'src/app/services/items.service';
@@ -25,7 +27,8 @@ export class TodoListPage implements OnInit {
   constructor(
     private listsService: ListsService,
     private itemsService: ItemsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private popoverController: PopoverController
   ) { }
 
   ngOnInit() {
@@ -49,6 +52,16 @@ export class TodoListPage implements OnInit {
 
   toggleCheckedItems() {
     this.areCheckedItemsShown = !this.areCheckedItemsShown;
+  }
+
+  async showListSettingsPopover(event, listDocId) {
+    const popover = await this.popoverController.create({
+      component: SettingsToDoListComponent,
+      event: event,
+      componentProps: { docId: listDocId }
+    })
+
+    return await popover.present()
   }
 
 }
