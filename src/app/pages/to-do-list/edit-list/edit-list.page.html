@@ -2,10 +2,10 @@
 
 <ion-content [fullscreen]="true">
   <form (ngSubmit)="updateListForm()">
-    <ion-item>
+    <div class="list-row">
       <ion-label>Name</ion-label>
       <ion-input type="text" [(ngModel)]="list.name" name="name"></ion-input>
-    </ion-item>
+    </div>
     <ion-button [disabled]="!list.name" type="submit">Update list name</ion-button>
   </form>
 </ion-content>
