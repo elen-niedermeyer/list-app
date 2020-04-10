@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ErrorAlertService } from 'src/app/services/error-alert.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToDoListOptionsService } from 'src/app/services/to-do-list-options.service';
 import { ToDoListsService } from 'src/app/services/to-do-lists.service';
 import { ToDoList } from 'src/app/to-do-list';
 
@@ -18,9 +18,8 @@ export class EditListPage {
 
   constructor(
     private listsService: ToDoListsService,
-    private errorAlertService: ErrorAlertService,
+    private listOptionsService: ToDoListOptionsService,
     private route: ActivatedRoute,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -29,14 +28,8 @@ export class EditListPage {
     })
   }
 
-  async updateListForm() {
-    let res = await this.listsService.updateList(this.list)
-    if (res.result) {
-      this.router.navigate(['/list', this.list.docId])
-    } else {
-      // an error appeared
-      this.errorAlertService.showErrorAlert(res.data);
-    }
+  updateListForm() {
+    this.listOptionsService.updateList(this.list)
   }
 
 }

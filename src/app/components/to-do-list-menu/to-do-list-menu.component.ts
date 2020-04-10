@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController, NavParams, PopoverController } from '@ionic/angular';
-import { ErrorAlertService } from 'src/app/services/error-alert.service';
-import { ToDoListsService } from 'src/app/services/to-do-lists.service';
+import { NavParams, PopoverController } from '@ionic/angular';
+import { ToDoListOptionsService } from 'src/app/services/to-do-list-options.service';
 
 @Component({
   selector: 'app-to-do-list-menu',
@@ -14,10 +12,7 @@ export class ToDoListMenuComponent implements OnInit {
   listDocId: string
 
   constructor(
-    private listsService: ToDoListsService,
-    private errorAlertService: ErrorAlertService,
-    private router: Router,
-    private alertController: AlertController,
+    private listOptionsService: ToDoListOptionsService,
     private navParams: NavParams,
     private popoverController: PopoverController,
   ) { }
@@ -27,36 +22,13 @@ export class ToDoListMenuComponent implements OnInit {
   }
 
   goToEditPage() {
-    this.router.navigate(['/edit-list', this.listDocId])
     this.popoverController.dismiss()
+    this.listOptionsService.editList(this.listDocId)
   }
 
-  async deleteList() {
-    const alert = await this.alertController.create({
-      header: 'Delete List',
-      message: 'Are you sure you want to delete this list?',
-      buttons: [
-        'No',
-        {
-          text: 'Yes',
-          handler: async () => {
-            this.handleListDeletion()
-          }
-        }]
-    })
-
+  deleteList() {
     this.popoverController.dismiss()
-    await alert.present()
-  }
-
-  private async handleListDeletion() {
-    let res = await this.listsService.deleteList(this.listDocId)
-    if (res.result) {
-      this.router.navigate([''])
-    } else {
-      // an error appeared
-      this.errorAlertService.showErrorAlert(res.data);
-    }
+    this.listOptionsService.deleteList(this.listDocId)
   }
 
 }
