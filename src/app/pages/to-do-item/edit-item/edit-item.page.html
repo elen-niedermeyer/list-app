@@ -1,4 +1,6 @@
-<app-header title="Edit Item"></app-header>
+<app-header title="Edit Item">
+  <app-delete-button slot="end" (click)="deleteItem()">Delete item</app-delete-button>
+</app-header>
 
 <ion-content [fullscreen]="true">
   <form (ngSubmit)="submitUpdateItemForm()">
@@ -15,6 +17,5 @@
       <ion-textarea auto-grow="true" [(ngModel)]="item.note" name="item_note"></ion-textarea>
     </div>
     <ion-button [disabled]="!item.name" type="submit">Update item</ion-button>
-    <ion-button (click)="deleteItem()">Delete item</ion-button>
   </form>
 </ion-content>

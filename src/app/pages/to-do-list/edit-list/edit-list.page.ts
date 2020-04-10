@@ -32,4 +32,8 @@ export class EditListPage {
     this.listOptionsService.updateList(this.list)
   }
 
+  deleteList() {
+    this.listOptionsService.deleteList(this.list.docId)
+  }
+
 }
