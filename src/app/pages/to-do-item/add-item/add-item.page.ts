@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToDoItem } from 'src/app/item';
 import { ErrorAlertService } from 'src/app/services/error-alert.service';
-import { ItemsService } from 'src/app/services/items.service';
+import { ToDoItemsService } from 'src/app/services/to-do-items.service';
+import { ToDoItem } from 'src/app/to-do-item';
 
 @Component({
   selector: 'app-add-item',
@@ -15,7 +15,7 @@ export class AddItemPage implements OnInit {
   item: ToDoItem = { name: null, creation_date: new Date().toISOString(), completed: false, completed_date: null, due_date: null, note: null }; /*TODO: was mache ich damit?*/
 
   constructor(
-    private itemsService: ItemsService,
+    private itemsService: ToDoItemsService,
     private errorAlertService: ErrorAlertService,
     private router: Router,
     private route: ActivatedRoute) { }

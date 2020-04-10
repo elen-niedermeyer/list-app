@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { SettingsToDoListComponent } from '../../components/settings-to-do-list/settings-to-do-list.component';
-import { ListsService } from '../../services/lists.service';
+import { ToDoListsService } from '../../services/to-do-lists.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { ListsService } from '../../services/lists.service';
 export class HomePage {
 
   constructor(
-    public listsService: ListsService,
+    public listsService: ToDoListsService,
     private popoverController: PopoverController
   ) {
     listsService.updateListsObservable();

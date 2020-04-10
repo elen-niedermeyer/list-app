@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TodoListPage } from './todo-list.page';
+import { ViewItemPage } from './view-item.page';
 
-describe('TodoListPage', () => {
-  let component: TodoListPage;
-  let fixture: ComponentFixture<TodoListPage>;
+describe('ItemPage', () => {
+  let component: ViewItemPage;
+  let fixture: ComponentFixture<ViewItemPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodoListPage ],
+      declarations: [ ViewItemPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TodoListPage);
+    fixture = TestBed.createComponent(ViewItemPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

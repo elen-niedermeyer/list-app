@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
-import { ToDoItem } from 'src/app/item';
+import { ToDoItem } from 'src/app/to-do-item';
 import { SettingsToDoItemComponent } from '../settings-to-do-item/settings-to-do-item.component';
 
 @Component({

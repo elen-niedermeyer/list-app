@@ -1,10 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
+
+import { ViewItemPageRoutingModule } from './view-item-routing.module';
+
+import { ViewItemPage } from './view-item.page';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { TodoListPageRoutingModule } from './todo-list-routing.module';
-import { TodoListPage } from './todo-list.page';
 
 @NgModule({
   imports: [
@@ -12,8 +15,8 @@ import { TodoListPage } from './todo-list.page';
     FormsModule,
     IonicModule,
     ComponentsModule,
-    TodoListPageRoutingModule
+    ViewItemPageRoutingModule
   ],
-  declarations: [TodoListPage]
+  declarations: [ViewItemPage]
 })
-export class TodoListPageModule { }
+export class ViewItemPageModule {}

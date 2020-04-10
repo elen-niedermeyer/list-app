@@ -1,4 +1,4 @@
-import { ToDoItem } from "./item";
+import { ToDoItem } from "./to-do-item";
 
 export interface ToDoList {
     docId?: string,

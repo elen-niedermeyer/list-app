@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToDoItem } from 'src/app/item';
-import { ToDoList } from 'src/app/list';
 import { ErrorAlertService } from 'src/app/services/error-alert.service';
-import { ItemsService } from 'src/app/services/items.service';
-import { ListsService } from 'src/app/services/lists.service';
+import { ToDoItemsService } from 'src/app/services/to-do-items.service';
+import { ToDoListsService } from 'src/app/services/to-do-lists.service';
+import { ToDoItem } from 'src/app/to-do-item';
+import { ToDoList } from 'src/app/to-do-list';
 
 const emptyItem: ToDoItem = { name: null, creation_date: new Date().toISOString(), completed: false, completed_date: null, due_date: null, note: null }; /*TODO: was mache ich damit?*/
 
@@ -15,15 +15,15 @@ const emptyItem: ToDoItem = { name: null, creation_date: new Date().toISOString(
 })
 export class AddListPage {
 
-  list: ToDoList = { 
-    name: null as string, 
-    creation_date: new Date().toISOString(), 
+  list: ToDoList = {
+    name: null as string,
+    creation_date: new Date().toISOString(),
     items: []
   } /*TODO: Was mache ich hiermit? */
 
   constructor(
-    private listsService: ListsService,
-    private itemsSevice: ItemsService,
+    private listsService: ToDoListsService,
+    private itemsSevice: ToDoItemsService,
     private errorAlertService: ErrorAlertService,
     private router: Router
   ) { }

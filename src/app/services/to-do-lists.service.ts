@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { ToDoList } from '../list';
 import { Response } from '../response';
+import { ToDoList } from '../to-do-list';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ListsService {
+export class ToDoListsService {
   lists: Observable<Array<ToDoList>>;
   private listsCollection: AngularFirestoreCollection<ToDoList>;
 

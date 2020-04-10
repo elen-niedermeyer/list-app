@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, NavParams, PopoverController } from '@ionic/angular';
 import { ErrorAlertService } from 'src/app/services/error-alert.service';
-import { ListsService } from 'src/app/services/lists.service';
+import { ToDoListsService } from 'src/app/services/to-do-lists.service';
 
 @Component({
   selector: 'app-settings-to-do-list',
@@ -14,7 +14,7 @@ export class SettingsToDoListComponent implements OnInit {
   listDocId: string
 
   constructor(
-    private listsService: ListsService,
+    private listsService: ToDoListsService,
     private errorAlertService: ErrorAlertService,
     private router: Router,
     private alertController: AlertController,

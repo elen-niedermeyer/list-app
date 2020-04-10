@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { ToDoItem } from 'src/app/item';
+import { ToDoItem } from 'src/app/to-do-item';
 import { ErrorAlertService } from 'src/app/services/error-alert.service';
 import { ToDoItemsService } from 'src/app/services/to-do-items.service';
 

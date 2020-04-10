@@ -1,13 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { ItemPageRoutingModule } from './item-routing.module';
-
-import { ItemPage } from './item.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { ViewListPageRoutingModule } from './view-list-routing.module';
+import { ViewListPage } from './view-list.page';
 
 @NgModule({
   imports: [
@@ -15,8 +12,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     ComponentsModule,
-    ItemPageRoutingModule
+    ViewListPageRoutingModule
   ],
-  declarations: [ItemPage]
+  declarations: [ViewListPage]
 })
-export class ItemPageModule {}
+export class ViewListPageModule { }

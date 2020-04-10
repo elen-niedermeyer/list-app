@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, NavParams, PopoverController } from '@ionic/angular';
 import { ErrorAlertService } from 'src/app/services/error-alert.service';
-import { ItemsService } from 'src/app/services/items.service';
+import { ToDoItemsService } from 'src/app/services/to-do-items.service';
 
 @Component({
   selector: 'app-settings-to-do-item',
@@ -15,7 +15,7 @@ export class SettingsToDoItemComponent implements OnInit {
   itemDocId: string
 
   constructor(
-    private itemsService: ItemsService,
+    private itemsService: ToDoItemsService,
     private errorAlertService: ErrorAlertService,
     private router: Router,
     private alertController: AlertController,

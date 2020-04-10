@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToDoList } from 'src/app/list';
 import { ErrorAlertService } from 'src/app/services/error-alert.service';
-import { ListsService } from 'src/app/services/lists.service';
+import { ToDoListsService } from 'src/app/services/to-do-lists.service';
+import { ToDoList } from 'src/app/to-do-list';
 
 @Component({
   selector: 'app-edit-list',
@@ -17,7 +17,7 @@ export class EditListPage {
   } /*TODO: Was mache ich hiermit? */
 
   constructor(
-    private listsService: ListsService,
+    private listsService: ToDoListsService,
     private errorAlertService: ErrorAlertService,
     private route: ActivatedRoute,
     private router: Router

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { ToDoItem } from '../item';
 import { Response } from '../response';
+import { ToDoItem } from '../to-do-item';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ItemsService {
+export class ToDoItemsService {
 
   constructor(private firestore: AngularFirestore) { }
 

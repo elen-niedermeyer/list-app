@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { ViewListPage } from './view-list.page';
 
-import { TodoListPage } from './todo-list.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TodoListPage
+    component: ViewListPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TodoListPageRoutingModule {}
+export class ViewListPageRoutingModule { }
