@@ -6,16 +6,17 @@
       <ion-label>Name</ion-label>
       <ion-input type="text" [(ngModel)]="list.name" name="list_name"></ion-input>
     </div>
-    <div class="list-row" style="justify-content: space-between;">
-      <ion-label>Items</ion-label>
-      <app-add-button (click)="addItem()"></app-add-button>
-    </div>
-    <ion-list>
-      <ion-item *ngFor="let item of list.items; index as i">
+    <div class="colum-flex-container sublist-container">
+      <div class="list-row sublist-head" style="justify-content: space-between;">
+        <ion-label>Items</ion-label>
+        <app-add-button (click)="addItem()"></app-add-button>
+      </div>
+      <div class="sublist-row" *ngFor="let item of list.items; index as i">
+        <ion-label>Item Name</ion-label>
         <ion-input type="text" [(ngModel)]="item.name" name="item_{{i}}"></ion-input>
         <app-remove-button slot="end" (click)="removeItem(i)"></app-remove-button>
-      </ion-item>
-    </ion-list>
+      </div>
+    </div>
     <ion-button [disabled]="!list.name" type="submit">Create list</ion-button>
   </form>
 </ion-content>
