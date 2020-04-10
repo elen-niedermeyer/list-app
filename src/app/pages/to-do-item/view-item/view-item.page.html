@@ -5,14 +5,8 @@
 
 <ion-content [fullscreen]="true">
 
-  <div class="text" *ngIf="item.due_date">
-    Due:
-    {{ item.due_date | date }}
-  </div>
+  <div class="text" *ngIf="item.due_date">Due: {{ item.due_date | date }}</div>
 
-  <div class="text" *ngIf="item.note">
-    Note:<br>
-    {{item.note}}
-  </div>
+  <div class="text" *ngIf="item.note">Note:<br>{{item.note}}</div>
 
 </ion-content>
