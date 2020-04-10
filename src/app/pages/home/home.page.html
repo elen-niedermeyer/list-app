@@ -3,11 +3,17 @@
 <ion-content [fullscreen]="true">
   <app-add-fab routerLink="/add-list"></app-add-fab>
 
-  <ion-list>
-    <div class="list-row" *ngFor="let list of listsService.lists | async">
-      <ion-label class="label-clickable" tappable [routerLink]="['/list', list.docId]">{{list.name}}</ion-label>
-      <app-settings-button (click)="showListSettingsPopover($event, list.docId)"></app-settings-button>
-    </div>
-  </ion-list>
+  <div class="text" *ngIf="lists.length === 0; else content">
+    You haven't created to do lists
+  </div>
+
+  <ng-template #content>
+    <ion-list>
+      <div class="list-row" *ngFor="let list of lists">
+        <ion-label class="label-clickable" tappable [routerLink]="['/list', list.docId]">{{list.name}}</ion-label>
+        <app-settings-button (click)="showListSettingsPopover($event, list.docId)"></app-settings-button>
+      </div>
+    </ion-list>
+  </ng-template>
 
 </ion-content>

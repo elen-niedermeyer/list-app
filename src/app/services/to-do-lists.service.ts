@@ -16,17 +16,9 @@ export class ToDoListsService {
     this.updateListsObservable;
   }
 
-  updateListsObservable() {
-    this.listsCollection = this.firestore.collection<ToDoList>('lists')
-    this.lists = this.listsCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data()
-          const docId = a.payload.doc.id
-          return { docId, ...data }
-        });
-      })
-    );
+  getAllLists(): Observable<Array<ToDoList>> {
+    this.updateListsObservable()
+    return this.lists;
   }
 
   getList(docId: string): Observable<ToDoList> {
@@ -57,6 +49,19 @@ export class ToDoListsService {
     return this.listsCollection.doc(docId).delete()
       .then(() => { return { result: true, data: null } })
       .catch(error => { return { result: false, data: error } })
+  }
+
+  private updateListsObservable() {
+    this.listsCollection = this.firestore.collection<ToDoList>('lists')
+    this.lists = this.listsCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data()
+          const docId = a.payload.doc.id
+          return { docId, ...data }
+        });
+      })
+    );
   }
 
 }
