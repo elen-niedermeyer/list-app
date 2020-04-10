@@ -15,5 +15,6 @@
       <ion-textarea auto-grow="true" [(ngModel)]="item.note" name="item_note"></ion-textarea>
     </div>
     <ion-button [disabled]="!item.name" type="submit">Update item</ion-button>
+    <ion-button (click)="deleteItem()">Delete item</ion-button>
   </form>
 </ion-content>
