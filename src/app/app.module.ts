@@ -11,14 +11,14 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
-import { SettingsToDoListComponent } from './components/settings-to-do-list/settings-to-do-list.component';
-import { SettingsToDoItemComponent } from './components/settings-to-do-item/settings-to-do-item.component';
+import { ToDoItemMenuComponent } from './components/to-do-item-menu/to-do-item-menu.component';
+import { ToDoListMenuComponent } from './components/to-do-list-menu/to-do-list-menu.component';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [
-    SettingsToDoListComponent, 
-    SettingsToDoItemComponent
+    ToDoListMenuComponent,
+    ToDoItemMenuComponent
   ],
   imports: [
     BrowserModule,

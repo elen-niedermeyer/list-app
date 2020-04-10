@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { SettingsToDoItemComponent } from 'src/app/components/settings-to-do-item/settings-to-do-item.component';
-import { ToDoItem } from 'src/app/to-do-item';
+import { ToDoItemMenuComponent } from 'src/app/components/to-do-item-menu/to-do-item-menu.component';
 import { ToDoItemsService } from 'src/app/services/to-do-items.service';
+import { ToDoItem } from 'src/app/to-do-item';
 
 @Component({
   selector: 'app-view-item',
@@ -36,7 +36,7 @@ export class ViewItemPage implements OnInit {
 
   async showItemSettingsPopover(event) {
     const popover = await this.popoverController.create({
-      component: SettingsToDoItemComponent,
+      component: ToDoItemMenuComponent,
       event: event,
       componentProps: {
         listDocId: this.listDocId,

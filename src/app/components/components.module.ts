@@ -9,8 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { ItemInListComponent } from './item-in-list/item-in-list.component';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { SettingsButtonComponent } from './settings-button/settings-button.component';
-import { SettingsToDoItemComponent } from './settings-to-do-item/settings-to-do-item.component';
-import { SettingsToDoListComponent } from './settings-to-do-list/settings-to-do-list.component';
+import { ToDoItemMenuComponent } from './to-do-item-menu/to-do-item-menu.component';
+import { ToDoListMenuComponent } from './to-do-list-menu/to-do-list-menu.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { SettingsToDoListComponent } from './settings-to-do-list/settings-to-do-
     ItemInListComponent,
     RemoveButtonComponent,
     SettingsButtonComponent,
-    SettingsToDoItemComponent,
-    SettingsToDoListComponent
+    ToDoItemMenuComponent,
+    ToDoListMenuComponent
   ],
   imports: [
     CommonModule,
@@ -36,8 +36,8 @@ import { SettingsToDoListComponent } from './settings-to-do-list/settings-to-do-
     ItemInListComponent,
     RemoveButtonComponent,
     SettingsButtonComponent,
-    SettingsToDoItemComponent,
-    SettingsToDoListComponent
+    ToDoItemMenuComponent,
+    ToDoListMenuComponent
   ]
 })
 export class ComponentsModule { }

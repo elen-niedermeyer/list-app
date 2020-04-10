@@ -5,11 +5,11 @@ import { ErrorAlertService } from 'src/app/services/error-alert.service';
 import { ToDoItemsService } from 'src/app/services/to-do-items.service';
 
 @Component({
-  selector: 'app-settings-to-do-item',
-  templateUrl: './settings-to-do-item.component.html',
-  styleUrls: ['./settings-to-do-item.component.scss'],
+  selector: 'app-to-do-item-menu',
+  templateUrl: './to-do-item-menu.component.html',
+  styleUrls: ['./to-do-item-menu.component.scss'],
 })
-export class SettingsToDoItemComponent implements OnInit {
+export class ToDoItemMenuComponent implements OnInit {
 
   listDocId: string
   itemDocId: string

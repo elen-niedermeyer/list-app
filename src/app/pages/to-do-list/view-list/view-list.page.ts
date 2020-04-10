@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { SettingsToDoListComponent } from 'src/app/components/settings-to-do-list/settings-to-do-list.component';
+import { ToDoListMenuComponent } from 'src/app/components/to-do-list-menu/to-do-list-menu.component';
 import { ToDoItemsService } from 'src/app/services/to-do-items.service';
 import { ToDoList } from 'src/app/to-do-list';
 import { ToDoListsService } from '../../../services/to-do-lists.service';
@@ -53,7 +53,7 @@ export class ViewListPage implements OnInit {
 
   async showListSettingsPopover(event) {
     const popover = await this.popoverController.create({
-      component: SettingsToDoListComponent,
+      component: ToDoListMenuComponent,
       event: event,
       componentProps: { docId: this.list.docId }
     })

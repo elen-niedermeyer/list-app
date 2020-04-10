@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SettingsToDoItemComponent } from './settings-to-do-item.component';
+import { ToDoItemMenuComponent } from './to-do-item-menu.component';
 
 describe('SettingsToDoItemComponent', () => {
-  let component: SettingsToDoItemComponent;
-  let fixture: ComponentFixture<SettingsToDoItemComponent>;
+  let component: ToDoItemMenuComponent;
+  let fixture: ComponentFixture<ToDoItemMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsToDoItemComponent ],
+      declarations: [ ToDoItemMenuComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SettingsToDoItemComponent);
+    fixture = TestBed.createComponent(ToDoItemMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
-import { SettingsToDoListComponent } from '../../components/settings-to-do-list/settings-to-do-list.component';
+import { ToDoListMenuComponent } from '../../components/to-do-list-menu/to-do-list-menu.component';
 import { ToDoListsService } from '../../services/to-do-lists.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class HomePage {
 
   async showListSettingsPopover(event, listDocId) {
     const popover = await this.popoverController.create({
-      component: SettingsToDoListComponent,
+      component: ToDoListMenuComponent,
       event: event,
       componentProps: { docId: listDocId }
     })
