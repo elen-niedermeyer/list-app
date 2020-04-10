@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController, NavParams, PopoverController } from '@ionic/angular';
-import { ErrorAlertService } from 'src/app/services/error-alert.service';
-import { ToDoItemsService } from 'src/app/services/to-do-items.service';
+import { NavParams, PopoverController } from '@ionic/angular';
+import { ToDoItemOptionsService } from 'src/app/services/to-do-item-options.service';
 
 @Component({
   selector: 'app-to-do-item-menu',
@@ -15,10 +13,7 @@ export class ToDoItemMenuComponent implements OnInit {
   itemDocId: string
 
   constructor(
-    private itemsService: ToDoItemsService,
-    private errorAlertService: ErrorAlertService,
-    private router: Router,
-    private alertController: AlertController,
+    private itemOptionsService: ToDoItemOptionsService,
     private navParams: NavParams,
     private popoverController: PopoverController,
   ) { }
@@ -29,36 +24,13 @@ export class ToDoItemMenuComponent implements OnInit {
   }
 
   goToEditPage() {
-    this.router.navigate(['/edit-item', this.listDocId, this.itemDocId])
     this.popoverController.dismiss()
+    this.itemOptionsService.editItem(this.listDocId, this.itemDocId)
   }
 
-  async deleteItem() {
-    const alert = await this.alertController.create({
-      header: 'Delete Item',
-      message: 'Are you sure you want to delete this item?',
-      buttons: [
-        'No',
-        {
-          text: 'Yes',
-          handler: async () => {
-            this.handleItemDeletion()
-          }
-        }]
-    })
-
+  deleteItem() {
     this.popoverController.dismiss()
-    await alert.present()
-  }
-
-  private async handleItemDeletion() {
-    let res = await this.itemsService.deleteItem(this.listDocId, this.itemDocId)
-    if (res.result) {
-      this.router.navigate(['/list', this.listDocId])
-    } else {
-      // an error appeared
-      this.errorAlertService.showErrorAlert(res.data);
-    }
+    this.itemOptionsService.deleteItem(this.listDocId, this.itemDocId)
   }
 
 }

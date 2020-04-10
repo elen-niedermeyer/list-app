@@ -23,7 +23,7 @@ export class AddListPage {
 
   constructor(
     private listsService: ToDoListsService,
-    private itemsSevice: ToDoItemsService,
+    private itemsService: ToDoItemsService,
     private errorAlertService: ErrorAlertService,
     private router: Router
   ) { }
@@ -38,7 +38,7 @@ export class AddListPage {
       // add items without error handling because the list is already created
       items.forEach(item => {
         if (item.name) {
-          this.itemsSevice.addItem(this.list.docId, item)
+          this.itemsService.addItem(this.list.docId, item)
         }
       })
 

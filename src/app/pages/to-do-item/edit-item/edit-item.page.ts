@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { ToDoItem } from 'src/app/to-do-item';
 import { ErrorAlertService } from 'src/app/services/error-alert.service';
+import { ToDoItemOptionsService } from 'src/app/services/to-do-item-options.service';
 import { ToDoItemsService } from 'src/app/services/to-do-items.service';
+import { ToDoItem } from 'src/app/to-do-item';
 
 @Component({
   selector: 'app-edit-item',
@@ -21,10 +21,8 @@ export class EditItemPage implements OnInit {
 
   constructor(
     private itemsService: ToDoItemsService,
-    private errorAlertService: ErrorAlertService,
+    private itemOptionsService: ToDoItemOptionsService,
     private route: ActivatedRoute,
-    private alertController: AlertController,
-    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -38,41 +36,11 @@ export class EditItemPage implements OnInit {
   }
 
   async submitUpdateItemForm() {
-    let res = await this.itemsService.updateItem(this.listDocId, this.item)
-    if (res.result) {
-      this.router.navigate(['/item', this.listDocId, this.item.docId])
-    } else {
-      // an error appeared
-      this.errorAlertService.showErrorAlert(res.data);
-    }
+    this.itemOptionsService.updateItem(this.listDocId, this.item)
   }
 
-  /* TODO: redundant with settings */
-  async deleteItem() {
-    const alert = await this.alertController.create({
-      header: 'Delete Item',
-      message: 'Are you sure you want to delete this item?',
-      buttons: [
-        'No',
-        {
-          text: 'Yes',
-          handler: async () => {
-            this.handleItemDeletion()
-          }
-        }]
-    })
-
-    await alert.present()
-  }
-
-  private async handleItemDeletion() {
-    let res = await this.itemsService.deleteItem(this.listDocId, this.item.docId)
-    if (res.result) {
-      this.router.navigate(['/list', this.listDocId])
-    } else {
-      // an error appeared
-      this.errorAlertService.showErrorAlert(res.data);
-    }
+  deleteItem() {
+    this.itemOptionsService.deleteItem(this.listDocId, this.item.docId)
   }
 
 }

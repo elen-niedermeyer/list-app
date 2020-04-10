@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ErrorAlertService } from 'src/app/services/error-alert.service';
-import { ToDoItemsService } from 'src/app/services/to-do-items.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToDoItemOptionsService } from 'src/app/services/to-do-item-options.service';
 import { ToDoItem } from 'src/app/to-do-item';
 
 @Component({
@@ -15,9 +14,7 @@ export class AddItemPage implements OnInit {
   item: ToDoItem = { name: null, creation_date: new Date().toISOString(), completed: false, completed_date: null, due_date: null, note: null }; /*TODO: was mache ich damit?*/
 
   constructor(
-    private itemsService: ToDoItemsService,
-    private errorAlertService: ErrorAlertService,
-    private router: Router,
+    private itemOptionsService: ToDoItemOptionsService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -27,13 +24,7 @@ export class AddItemPage implements OnInit {
   }
 
   async submitItemForm() {
-    let res = await this.itemsService.addItem(this.listDocId, this.item);
-    if (res.result) {
-      this.router.navigate(['/list', this.listDocId]);
-    } else {
-      // an error appeared
-      this.errorAlertService.showErrorAlert(res.data);
-    }
+    this.itemOptionsService.addItem(this.listDocId, this.item)
   }
 
 }
