@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ToDoItemOptionsService } from 'src/app/services/to-do-item-options.service';
+import { ToDoItemService } from 'src/app/services/to-do-item.service';
 import { ToDoItem } from 'src/app/to-do-item';
 
 @Component({
@@ -14,7 +14,7 @@ export class AddItemPage implements OnInit {
   item: ToDoItem = { name: null, creation_date: new Date().toISOString(), completed: false, completed_date: null, due_date: null, note: null }; /*TODO: was mache ich damit?*/
 
   constructor(
-    private itemOptionsService: ToDoItemOptionsService,
+    private itemService: ToDoItemService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class AddItemPage implements OnInit {
   }
 
   async submitItemForm() {
-    this.itemOptionsService.addItem(this.listDocId, this.item)
+    this.itemService.addItem(this.listDocId, this.item)
   }
 
 }

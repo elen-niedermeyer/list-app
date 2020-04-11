@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
-import { ToDoItemOptionsService } from 'src/app/services/to-do-item-options.service';
+import { ToDoItemService } from 'src/app/services/to-do-item.service';
 import { ToDoItem } from 'src/app/to-do-item';
 
 @Component({
@@ -20,7 +20,7 @@ export class EditItemPage implements OnInit {
 
   constructor(
     private itemDBService: ToDoItemDatabaseService,
-    private itemOptionsService: ToDoItemOptionsService,
+    private itemService: ToDoItemService,
     private route: ActivatedRoute,
   ) { }
 
@@ -35,11 +35,11 @@ export class EditItemPage implements OnInit {
   }
 
   async submitUpdateItemForm() {
-    this.itemOptionsService.updateItem(this.listDocId, this.item)
+    this.itemService.updateItem(this.listDocId, this.item)
   }
 
   deleteItem() {
-    this.itemOptionsService.deleteItem(this.listDocId, this.item.docId)
+    this.itemService.deleteItem(this.listDocId, this.item.docId)
   }
 
 }

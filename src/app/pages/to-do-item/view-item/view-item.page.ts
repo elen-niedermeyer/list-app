@@ -4,7 +4,7 @@ import { PopoverController } from '@ionic/angular';
 import { ToDoItemMenuComponent } from 'src/app/components/to-do-item-menu/to-do-item-menu.component';
 import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
 import { ToDoItem } from 'src/app/to-do-item';
-import { ToDoItemOptionsService } from 'src/app/services/to-do-item-options.service';
+import { ToDoItemService } from 'src/app/services/to-do-item.service';
 
 @Component({
   selector: 'app-view-item',
@@ -21,7 +21,7 @@ export class ViewItemPage implements OnInit {
   } /*TODO*/
 
   constructor(
-    public itemService: ToDoItemOptionsService,
+    public itemService: ToDoItemService,
     public itemsDBService: ToDoItemDatabaseService,
     private route: ActivatedRoute,
     private popoverController: PopoverController) { }
