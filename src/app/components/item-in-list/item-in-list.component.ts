@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { ToDoItemService } from 'src/app/services/to-do-item.service';
 import { ToDoItem } from 'src/app/to-do-item';
 import { ToDoItemMenuComponent } from '../to-do-item-menu/to-do-item-menu.component';
 
@@ -13,7 +14,10 @@ export class ItemInListComponent {
   @Input() listDocId: string
   @Input() item: ToDoItem
 
-  constructor(private popoverController: PopoverController) { }
+  constructor(
+    public itemService: ToDoItemService,
+    private popoverController: PopoverController
+  ) { }
 
   async showItemSettingsPopover(event) {
     const popover = await this.popoverController.create({

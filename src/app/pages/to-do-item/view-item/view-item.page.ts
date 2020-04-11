@@ -22,14 +22,14 @@ export class ViewItemPage implements OnInit {
 
   constructor(
     public itemService: ToDoItemService,
-    public itemsDBService: ToDoItemDatabaseService,
+    public itemDBService: ToDoItemDatabaseService,
     private route: ActivatedRoute,
     private popoverController: PopoverController) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.listDocId = params.get('listId')
-      this.itemsDBService.getItem(this.listDocId, params.get('itemId'))
+      this.itemDBService.getItem(this.listDocId, params.get('itemId'))
         .subscribe(item => {
           this.item = item
         })

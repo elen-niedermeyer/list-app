@@ -31,6 +31,12 @@
     white-space: pre-wrap;
 }
 
+.text-danger {
+    padding: 10px;
+    color: var(--ion-color-danger);
+    white-space: pre-wrap;
+}
+
 .row-flex-container {
     display: flex;
     flex-direction: row;

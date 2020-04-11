@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ToDoListDatabaseService } from './to-do-list-database.service';
 
-describe('ListsServiceService', () => {
+describe('ToDoListDatabaseService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
