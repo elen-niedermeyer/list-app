@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
 import { ToDoListDatabaseService } from 'src/app/services/to-do-list-database.service';
 import { ToDoListService } from 'src/app/services/to-do-list.service';
 import { ToDoList } from 'src/app/to-do-list';
@@ -24,7 +25,9 @@ export class EditListPage {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.listDBService.getList(params.get('listId')).subscribe(list => this.list = list);
+      this.listDBService.getList(params.get('listId'))
+        .pipe(take(1))
+        .subscribe(list => this.list = list);
     })
   }
 

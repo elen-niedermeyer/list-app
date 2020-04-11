@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { ToDoList } from 'src/app/to-do-list';
 import { ToDoListMenuComponent } from '../../components/to-do-list-menu/to-do-list-menu.component';
 import { ToDoListDatabaseService } from '../../services/to-do-list-database.service';
@@ -11,7 +12,7 @@ import { ToDoListDatabaseService } from '../../services/to-do-list-database.serv
 })
 export class HomePage implements OnInit {
 
-  lists: Array<ToDoList> = []
+  listsObservable: Observable<ToDoList[]>
 
   constructor(
     public listDBService: ToDoListDatabaseService,
@@ -19,10 +20,7 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.listDBService.getAllLists()
-      .subscribe(lists => {
-        this.lists = lists
-      });
+    this.listsObservable = this.listDBService.getAllLists()
   }
 
   async showListSettingsPopover(event, listDocId) {
