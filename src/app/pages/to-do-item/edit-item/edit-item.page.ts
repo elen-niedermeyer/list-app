@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
 import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
 import { ToDoItemService } from 'src/app/services/to-do-item.service';
 import { ToDoItem } from 'src/app/to-do-item';
@@ -28,6 +29,7 @@ export class EditItemPage implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.listDocId = params.get('listId')
       this.itemDBService.getItem(this.listDocId, params.get('itemId'))
+        .pipe(take(1))
         .subscribe(item => {
           this.item = item
         })

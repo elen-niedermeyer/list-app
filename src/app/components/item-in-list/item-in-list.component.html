@@ -1,5 +1,5 @@
 <div class="list-row">
-  <ion-checkbox [(ngModel)]="item.completed"></ion-checkbox>
+  <ion-checkbox [(ngModel)]="item.completed" (ionChange)="itemService.checkItem(listDocId, item)"></ion-checkbox>
   <ion-label class="label-clickable" [routerLink]="['/item', listDocId, item.docId]">{{item.name}}</ion-label>
   <div slot="end" class="row-flex-container" *ngIf="item.due_date"
     [ngClass]="itemService.isDateOverdue(item.due_date) ? 'text-danger' : 'text'">

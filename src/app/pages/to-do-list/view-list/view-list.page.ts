@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
+import { take } from 'rxjs/operators';
 import { ToDoListMenuComponent } from 'src/app/components/to-do-list-menu/to-do-list-menu.component';
 import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
 import { ToDoList } from 'src/app/to-do-list';
@@ -31,10 +32,14 @@ export class ViewListPage implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.listDBService.getList(params.get('listId'))
+        .pipe(take(1))
         .subscribe(list => {
           this.list = list
           this.itemDBService.getItemsFromList(this.list.docId)
-            .subscribe(items => this.list.items = items)
+            .pipe(take(1))
+            .subscribe(items => {
+              this.list.items = items
+            })
         });
     })
   }
