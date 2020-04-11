@@ -22,7 +22,7 @@ export class ViewItemPage implements OnInit {
 
   constructor(
     public itemService: ToDoItemService,
-    public itemDBService: ToDoItemDatabaseService,
+    private itemDBService: ToDoItemDatabaseService,
     private route: ActivatedRoute,
     private popoverController: PopoverController) { }
 

@@ -48,6 +48,14 @@ export class ToDoItemService {
 
   }
 
+  checkItem(listDocId: string, item: ToDoItem) {
+    if (item.completed) {
+      item.completed_date = new Date().toISOString()
+    }
+
+    this.itemDBService.updateCompletedProperty(listDocId, item)
+  }
+
   async deleteItem(listDocId: string, itemDocId: string) {
     const alert = await this.alertController.create({
       header: 'Delete Item',

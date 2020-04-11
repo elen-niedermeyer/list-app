@@ -1,6 +1,6 @@
 <app-header [title]="item.name">
   <ion-checkbox slot="start" [(ngModel)]="item.completed"
-    (ionChange)="itemDBService.updateCompletedProperty(listDocId, item)">
+    (ionChange)="itemService.checkItem(listDocId, item)">
   </ion-checkbox>
   <app-settings-button slot="end" (click)="showItemSettingsPopover($event)"></app-settings-button>
 </app-header>
