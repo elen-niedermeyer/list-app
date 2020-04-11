@@ -42,4 +42,8 @@ export class EditItemPage implements OnInit {
     this.itemService.deleteItem(this.listDocId, this.item.docId)
   }
 
+  removeDueDate() {
+    this.item.due_date = null
+  }
+
 }

@@ -11,6 +11,7 @@
     <div class="list-row">
       <ion-label>Due Date</ion-label>
       <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="item.due_date" name="item_due"></ion-datetime>
+      <app-cancel-button *ngIf="item.due_date" (click)="removeDueDate()"></app-cancel-button>
     </div>
     <div class="list-row">
       <ion-label class="note-label">Note</ion-label>
