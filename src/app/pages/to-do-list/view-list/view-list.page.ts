@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { ToDoListMenuComponent } from 'src/app/components/to-do-list-menu/to-do-list-menu.component';
-import { ToDoItemsService } from 'src/app/services/to-do-items.service';
+import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
 import { ToDoList } from 'src/app/to-do-list';
-import { ToDoListsService } from '../../../services/to-do-lists.service';
+import { ToDoListDatabaseService } from '../../../services/to-do-list-database.service';
 
 @Component({
   selector: 'app-view-list',
@@ -22,18 +22,18 @@ export class ViewListPage implements OnInit {
   areCheckedItemsShown: boolean = false;
 
   constructor(
-    private listsService: ToDoListsService,
-    private itemsService: ToDoItemsService,
+    private listDBService: ToDoListDatabaseService,
+    private itemDBService: ToDoItemDatabaseService,
     private route: ActivatedRoute,
     private popoverController: PopoverController
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.listsService.getList(params.get('listId'))
+      this.listDBService.getList(params.get('listId'))
         .subscribe(list => {
           this.list = list
-          this.itemsService.getItemsFromList(this.list.docId)
+          this.itemDBService.getItemsFromList(this.list.docId)
             .subscribe(items => this.list.items = items)
         });
     })

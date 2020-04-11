@@ -1,11 +1,13 @@
 <app-header [title]="item.name">
-  <ion-checkbox slot="start" [(ngModel)]="item.completed" (ionChange)="itemsService.updateCompleted(listDocId, item)"></ion-checkbox>
+  <ion-checkbox slot="start" [(ngModel)]="item.completed" (ionChange)="itemsDBService.updateCompleted(listDocId, item)">
+  </ion-checkbox>
   <app-settings-button slot="end" (click)="showItemSettingsPopover($event)"></app-settings-button>
 </app-header>
 
 <ion-content [fullscreen]="true">
 
-  <div class="text" *ngIf="item.due_date">Due: {{ item.due_date | date }}</div>
+  <div class="text" *ngIf="item.due_date"
+    [ngClass]="itemService.isDateOverdue(item.due_date) ? 'text-danger' : 'text'">Due: {{ item.due_date | date }}</div>
 
   <div class="text" *ngIf="item.note">Note:<br>{{item.note}}</div>
 

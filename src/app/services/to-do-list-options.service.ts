@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { ToDoListsService } from 'src/app/services/to-do-lists.service';
+import { ToDoListDatabaseService } from 'src/app/services/to-do-list-database.service';
 import { ToDoList } from '../to-do-list';
 import { ErrorAlertService } from './error-alert.service';
-import { ToDoItemsService } from './to-do-items.service';
+import { ToDoItemDatabaseService } from './to-do-item-database.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ import { ToDoItemsService } from './to-do-items.service';
 export class ToDoListOptionsService {
 
   constructor(
-    private listsService: ToDoListsService,
-    private itemsService: ToDoItemsService,
+    private listDBService: ToDoListDatabaseService,
+    private itemDBService: ToDoItemDatabaseService,
     private errorAlertService: ErrorAlertService,
     private alertController: AlertController,
     private router: Router
@@ -23,14 +23,14 @@ export class ToDoListOptionsService {
     let items = list.items.slice() // deep copy
     list.items = []
 
-    let res = await this.listsService.addList(list);
+    let res = await this.listDBService.addList(list);
     if (res.result) {
       list.docId = res.data;
 
       // add items without error handling because the list is already created
       items.forEach(item => {
         if (item.name) {
-          this.itemsService.addItem(list.docId, item)
+          this.itemDBService.addItem(list.docId, item)
         }
       })
 
@@ -46,7 +46,7 @@ export class ToDoListOptionsService {
   }
 
   async updateList(list: ToDoList) {
-    let res = await this.listsService.updateList(list)
+    let res = await this.listDBService.updateList(list)
     if (res.result) {
       this.router.navigate(['/list', list.docId])
     } else {
@@ -73,7 +73,7 @@ export class ToDoListOptionsService {
   }
 
   private async handleListDeletion(listDocId: string) {
-    let res = await this.listsService.deleteList(listDocId)
+    let res = await this.listDBService.deleteList(listDocId)
     if (res.result) {
       this.router.navigate([''])
     } else {

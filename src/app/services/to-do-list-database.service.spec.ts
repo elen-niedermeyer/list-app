@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ToDoListsService } from './to-do-lists.service';
+import { ToDoListDatabaseService } from './to-do-list-database.service';
 
 describe('ListsServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ToDoListsService = TestBed.get(ToDoListsService);
+    const service: ToDoListDatabaseService = TestBed.get(ToDoListDatabaseService);
     expect(service).toBeTruthy();
   });
 });

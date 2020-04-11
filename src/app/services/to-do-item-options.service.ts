@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ToDoItem } from '../to-do-item';
 import { ErrorAlertService } from './error-alert.service';
-import { ToDoItemsService } from './to-do-items.service';
+import { ToDoItemDatabaseService } from './to-do-item-database.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +11,14 @@ import { ToDoItemsService } from './to-do-items.service';
 export class ToDoItemOptionsService {
 
   constructor(
-    private itemsService: ToDoItemsService,
+    private itemDBService: ToDoItemDatabaseService,
     private errorAlertService: ErrorAlertService,
     private router: Router,
     private alertController: AlertController
   ) { }
 
   async addItem(listDocId: string, item: ToDoItem) {
-    let res = await this.itemsService.addItem(listDocId, item);
+    let res = await this.itemDBService.addItem(listDocId, item);
     if (res.result) {
       this.router.navigate(['/list', listDocId]);
     } else {
@@ -27,12 +27,18 @@ export class ToDoItemOptionsService {
     }
   }
 
+  isDateOverdue(itemDueDate) {
+    let dueDate = new Date(itemDueDate).setHours(0, 0, 0, 0)
+    let today = new Date().setHours(0, 0, 0, 0)
+    return dueDate < today
+  }
+
   editItem(listDocId: string, itemDocId: string) {
     this.router.navigate(['/edit-item', listDocId, itemDocId])
   }
 
   async updateItem(listDocId: string, item: ToDoItem) {
-    let res = await this.itemsService.updateItem(listDocId, item)
+    let res = await this.itemDBService.updateItem(listDocId, item)
     if (res.result) {
       this.router.navigate(['/item', listDocId, item.docId])
     } else {
@@ -60,7 +66,7 @@ export class ToDoItemOptionsService {
   }
 
   private async handleItemDeletion(listDocId: string, itemDocId: string) {
-    let res = await this.itemsService.deleteItem(listDocId, itemDocId)
+    let res = await this.itemDBService.deleteItem(listDocId, itemDocId)
     if (res.result) {
       this.router.navigate(['/list', listDocId])
     } else {

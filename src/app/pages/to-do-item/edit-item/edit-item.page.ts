@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ErrorAlertService } from 'src/app/services/error-alert.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
 import { ToDoItemOptionsService } from 'src/app/services/to-do-item-options.service';
-import { ToDoItemsService } from 'src/app/services/to-do-items.service';
 import { ToDoItem } from 'src/app/to-do-item';
 
 @Component({
@@ -20,7 +19,7 @@ export class EditItemPage implements OnInit {
   } /*TODO*/
 
   constructor(
-    private itemsService: ToDoItemsService,
+    private itemDBService: ToDoItemDatabaseService,
     private itemOptionsService: ToDoItemOptionsService,
     private route: ActivatedRoute,
   ) { }
@@ -28,7 +27,7 @@ export class EditItemPage implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.listDocId = params.get('listId')
-      this.itemsService.getItem(this.listDocId, params.get('itemId'))
+      this.itemDBService.getItem(this.listDocId, params.get('itemId'))
         .subscribe(item => {
           this.item = item
         })

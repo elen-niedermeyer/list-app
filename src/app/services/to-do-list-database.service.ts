@@ -8,7 +8,7 @@ import { ToDoList } from '../to-do-list';
 @Injectable({
   providedIn: 'root'
 })
-export class ToDoListsService {
+export class ToDoListDatabaseService {
   lists: Observable<Array<ToDoList>>;
   private listsCollection: AngularFirestoreCollection<ToDoList>;
 

@@ -8,7 +8,7 @@ import { ToDoItem } from '../to-do-item';
 @Injectable({
   providedIn: 'root'
 })
-export class ToDoItemsService {
+export class ToDoItemDatabaseService {
 
   constructor(private firestore: AngularFirestore) { }
 

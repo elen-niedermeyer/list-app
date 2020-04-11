@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToDoListDatabaseService } from 'src/app/services/to-do-list-database.service';
 import { ToDoListOptionsService } from 'src/app/services/to-do-list-options.service';
-import { ToDoListsService } from 'src/app/services/to-do-lists.service';
 import { ToDoList } from 'src/app/to-do-list';
 
 @Component({
@@ -17,14 +17,14 @@ export class EditListPage {
   } /*TODO: Was mache ich hiermit? */
 
   constructor(
-    private listsService: ToDoListsService,
+    private listDBService: ToDoListDatabaseService,
     private listOptionsService: ToDoListOptionsService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.listsService.getList(params.get('listId')).subscribe(list => this.list = list);
+      this.listDBService.getList(params.get('listId')).subscribe(list => this.list = list);
     })
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { ToDoList } from 'src/app/to-do-list';
 import { ToDoListMenuComponent } from '../../components/to-do-list-menu/to-do-list-menu.component';
-import { ToDoListsService } from '../../services/to-do-lists.service';
+import { ToDoListDatabaseService } from '../../services/to-do-list-database.service';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +14,12 @@ export class HomePage implements OnInit {
   lists: Array<ToDoList> = []
 
   constructor(
-    public listsService: ToDoListsService,
+    public listDBService: ToDoListDatabaseService,
     private popoverController: PopoverController
   ) { }
 
   ngOnInit() {
-    this.listsService.getAllLists()
+    this.listDBService.getAllLists()
       .subscribe(lists => {
         this.lists = lists
       });

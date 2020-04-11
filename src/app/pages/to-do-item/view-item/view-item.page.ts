@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { ToDoItemMenuComponent } from 'src/app/components/to-do-item-menu/to-do-item-menu.component';
-import { ToDoItemsService } from 'src/app/services/to-do-items.service';
+import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
 import { ToDoItem } from 'src/app/to-do-item';
+import { ToDoItemOptionsService } from 'src/app/services/to-do-item-options.service';
 
 @Component({
   selector: 'app-view-item',
@@ -20,14 +21,15 @@ export class ViewItemPage implements OnInit {
   } /*TODO*/
 
   constructor(
-    private itemsService: ToDoItemsService,
+    public itemService: ToDoItemOptionsService,
+    public itemsDBService: ToDoItemDatabaseService,
     private route: ActivatedRoute,
     private popoverController: PopoverController) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.listDocId = params.get('listId')
-      this.itemsService.getItem(this.listDocId, params.get('itemId'))
+      this.itemsDBService.getItem(this.listDocId, params.get('itemId'))
         .subscribe(item => {
           this.item = item
         })
