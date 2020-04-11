@@ -1,19 +1,21 @@
-<app-header title="Edit Item"></app-header>
+<app-header title="Edit Item">
+  <app-delete-button slot="end" (click)="deleteItem()">Delete item</app-delete-button>
+</app-header>
 
 <ion-content [fullscreen]="true">
   <form (ngSubmit)="submitUpdateItemForm()">
-    <ion-item>
+    <div class="list-row">
       <ion-label>Name</ion-label>
       <ion-input type="text" [(ngModel)]="item.name" name="item_name"></ion-input>
-    </ion-item>
-    <ion-item>
+    </div>
+    <div class="list-row">
       <ion-label>Due Date</ion-label>
       <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="item.due_date" name="item_due"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Note</ion-label>
-      <ion-input type="text" [(ngModel)]="item.note" name="item_note"></ion-input>
-    </ion-item>
+    </div>
+    <div class="list-row">
+      <ion-label class="note-label">Note</ion-label>
+      <ion-textarea auto-grow="true" [(ngModel)]="item.note" name="item_note"></ion-textarea>
+    </div>
     <ion-button [disabled]="!item.name" type="submit">Update item</ion-button>
   </form>
 </ion-content>

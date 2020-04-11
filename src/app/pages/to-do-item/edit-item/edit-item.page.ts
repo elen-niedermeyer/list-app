@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToDoItem } from 'src/app/item';
-import { ItemsService } from 'src/app/services/items.service';
-import { ErrorAlertService } from 'src/app/services/error-alert.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
+import { ToDoItemService } from 'src/app/services/to-do-item.service';
+import { ToDoItem } from 'src/app/to-do-item';
 
 @Component({
   selector: 'app-edit-item',
@@ -19,16 +19,15 @@ export class EditItemPage implements OnInit {
   } /*TODO*/
 
   constructor(
-    private itemsService: ItemsService,
-    private errorAlertService: ErrorAlertService,
+    private itemDBService: ToDoItemDatabaseService,
+    private itemService: ToDoItemService,
     private route: ActivatedRoute,
-    private router: Router
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.listDocId = params.get('listId')
-      this.itemsService.getItem(this.listDocId, params.get('itemId'))
+      this.itemDBService.getItem(this.listDocId, params.get('itemId'))
         .subscribe(item => {
           this.item = item
         })
@@ -36,13 +35,11 @@ export class EditItemPage implements OnInit {
   }
 
   async submitUpdateItemForm() {
-    let res = await this.itemsService.updateItem(this.listDocId, this.item)
-    if (res.result) {
-      this.router.navigate(['/item', this.listDocId, this.item.docId])
-    } else {
-      // an error appeared
-      this.errorAlertService.showErrorAlert(res.data);
-    }
+    this.itemService.updateItem(this.listDocId, this.item)
+  }
+
+  deleteItem() {
+    this.itemService.deleteItem(this.listDocId, this.item.docId)
   }
 
 }

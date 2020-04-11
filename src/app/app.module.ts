@@ -11,10 +11,15 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
+import { ToDoItemMenuComponent } from './components/to-do-item-menu/to-do-item-menu.component';
+import { ToDoListMenuComponent } from './components/to-do-list-menu/to-do-list-menu.component';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [
+    ToDoListMenuComponent,
+    ToDoItemMenuComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

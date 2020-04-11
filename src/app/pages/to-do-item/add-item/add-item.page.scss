@@ -1,0 +1,14 @@
+ion-datetime {
+    // fill the row
+    flex-grow: 1;
+}
+
+.note-label {
+    align-self: flex-start;
+}
+
+ion-textarea {
+    // no padding for note input field 
+    --padding-top: 0;
+    --padding-bottom: 0;
+}

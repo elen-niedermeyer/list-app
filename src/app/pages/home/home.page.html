@@ -1,16 +1,19 @@
-<app-header title="Lists">
-  <app-add-button slot="end" routerLink="/add-list"></app-add-button>
-</app-header>
+<app-header title="Lists"></app-header>
 
 <ion-content [fullscreen]="true">
+  <app-add-fab routerLink="/add-list"></app-add-fab>
 
-  <ion-list>
-    <ion-item *ngFor="let list of listsService.lists | async">
-      <ion-label [routerLink]="['/list', list.docId]">{{list.name}}</ion-label>
-      <app-add-button slot="end" [routerLink]="['/add-item', list.docId]"></app-add-button>
-      <app-edit-button slot="end" [routerLink]="['/edit-list', list.docId]"></app-edit-button>
-      <app-delete-button slot="end" [type]="deleteButtonType" [docId]="list.docId"></app-delete-button>
-    </ion-item>
-  </ion-list>
+  <div class="text" *ngIf="lists.length === 0; else content">
+    You haven't created to do lists
+  </div>
+
+  <ng-template #content>
+    <ion-list>
+      <div class="list-row" *ngFor="let list of lists">
+        <ion-label class="label-clickable" tappable [routerLink]="['/list', list.docId]">{{list.name}}</ion-label>
+        <app-settings-button (click)="showListSettingsPopover($event, list.docId)"></app-settings-button>
+      </div>
+    </ion-list>
+  </ng-template>
 
 </ion-content>

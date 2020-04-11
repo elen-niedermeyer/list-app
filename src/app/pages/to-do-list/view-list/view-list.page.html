@@ -1,0 +1,28 @@
+<app-header [title]="list.name">
+  <app-settings-button slot="end" (click)="showListSettingsPopover($event)"></app-settings-button>
+</app-header>
+
+<ion-content [fullscreen]="true">
+  <app-add-fab [routerLink]="['/add-item', list.docId]"></app-add-fab>
+
+  <div class="text" *ngIf="list.items.length === 0; else content">
+    The list does not contain items
+  </div>
+
+  <ng-template #content>
+    <ion-list>
+      <app-item-in-list *ngFor="let item of filterUncheckedItems()" [item]="item" [listDocId]="list.docId">
+      </app-item-in-list>
+    </ion-list>
+
+    <div class="row-flex-container checked-item-label-container" (click)="toggleShowCheckedItems()">
+      <ion-icon [name]="areCheckedItemsShown ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+      <p>Checked items</p>
+    </div>
+    <ion-list *ngIf="areCheckedItemsShown">
+      <app-item-in-list *ngFor="let item of filterCheckedItems()" [item]="item" [listDocId]="list.docId">
+      </app-item-in-list>
+    </ion-list>
+  </ng-template>
+
+</ion-content>

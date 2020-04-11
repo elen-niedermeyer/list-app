@@ -1,24 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ElementTypes } from 'src/app/element-types.enum';
-import { ToDoItem } from 'src/app/item';
+import { Component, Input } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { ToDoItemService } from 'src/app/services/to-do-item.service';
+import { ToDoItem } from 'src/app/to-do-item';
+import { ToDoItemMenuComponent } from '../to-do-item-menu/to-do-item-menu.component';
 
 @Component({
   selector: 'app-item-in-list',
   templateUrl: './item-in-list.component.html',
   styleUrls: ['./item-in-list.component.scss'],
 })
-export class ItemInListComponent implements OnInit{
+export class ItemInListComponent {
 
   @Input() listDocId: string
   @Input() item: ToDoItem
 
-  docPath: string
-  deleteButtonType = ElementTypes.TYPE_ITEM
+  constructor(
+    public itemService: ToDoItemService,
+    private popoverController: PopoverController
+  ) { }
 
-  constructor() { }
+  async showItemSettingsPopover(event) {
+    const popover = await this.popoverController.create({
+      component: ToDoItemMenuComponent,
+      event: event,
+      componentProps: {
+        listDocId: this.listDocId,
+        itemDocId: this.item.docId
+      }
+    })
 
-  ngOnInit() {
-    this.docPath = 'lists/' + this.listDocId + '/items/' + this.item.docId
+    return await popover.present()
   }
 
 }

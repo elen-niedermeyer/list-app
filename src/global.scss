@@ -24,3 +24,86 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.text {
+    padding: 10px;
+    color: black;
+    white-space: pre-wrap;
+}
+
+.text-danger {
+    padding: 10px;
+    color: var(--ion-color-danger);
+    white-space: pre-wrap;
+}
+
+.row-flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 5px;
+    
+    * {
+        margin: 3px;
+        padding: 0px;
+    }
+}
+
+.column-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    * {
+        margin: 3px;
+        padding: 0px;
+    }
+}
+
+.list-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-bottom: 1px solid var(--ion-color-medium);
+    padding: 10px;
+    margin: 0;
+
+    * {
+        margin: 3px;
+    }
+
+    ion-label {
+        color: black;
+    }
+
+    ion-label.label-clickable {
+        flex-grow: 1; 
+        color: black;
+    }
+
+    ion-label:hover.label-clickable, ion-label:active.label-clickable {
+        color: var(--ion-color-primary);
+    }
+}
+
+.sublist-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-top: 1px solid var(--ion-color-medium-tint);
+    padding: 5px 10px;
+    margin: 0;
+
+    * {
+        margin: 3px;
+    }
+
+}
+
+.option-menu-list {
+    padding: 0;
+}

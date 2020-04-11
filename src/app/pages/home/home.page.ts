@@ -1,21 +1,38 @@
-import { Component } from '@angular/core';
-
-import { ListsService } from '../../services/lists.service';
-import { ElementTypes } from 'src/app/element-types.enum';
+import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { ToDoList } from 'src/app/to-do-list';
+import { ToDoListMenuComponent } from '../../components/to-do-list-menu/to-do-list-menu.component';
+import { ToDoListDatabaseService } from '../../services/to-do-list-database.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  deleteButtonType = ElementTypes.TYPE_LIST
+  lists: Array<ToDoList> = []
 
   constructor(
-    public listsService: ListsService
-  ) {
-    listsService.updateListsObservable();
+    public listDBService: ToDoListDatabaseService,
+    private popoverController: PopoverController
+  ) { }
+
+  ngOnInit() {
+    this.listDBService.getAllLists()
+      .subscribe(lists => {
+        this.lists = lists
+      });
+  }
+
+  async showListSettingsPopover(event, listDocId) {
+    const popover = await this.popoverController.create({
+      component: ToDoListMenuComponent,
+      event: event,
+      componentProps: { docId: listDocId }
+    })
+
+    return await popover.present()
   }
 
 }
