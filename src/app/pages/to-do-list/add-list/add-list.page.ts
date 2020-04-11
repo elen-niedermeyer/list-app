@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToDoListOptionsService } from 'src/app/services/to-do-list-options.service';
+import { ToDoListService } from 'src/app/services/to-do-list.service';
 import { ToDoItem } from 'src/app/to-do-item';
 import { ToDoList } from 'src/app/to-do-list';
 
@@ -26,11 +26,11 @@ export class AddListPage {
   } /*TODO: Was mache ich hiermit? */
 
   constructor(
-    private listOptionsService: ToDoListOptionsService
+    private listService: ToDoListService
   ) { }
 
   async submitListForm() {
-    this.listOptionsService.addList(this.list)
+    this.listService.addList(this.list)
   }
 
   addItem() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, PopoverController } from '@ionic/angular';
-import { ToDoListOptionsService } from 'src/app/services/to-do-list-options.service';
+import { ToDoListService } from 'src/app/services/to-do-list.service';
 
 @Component({
   selector: 'app-to-do-list-menu',
@@ -12,7 +12,7 @@ export class ToDoListMenuComponent implements OnInit {
   listDocId: string
 
   constructor(
-    private listOptionsService: ToDoListOptionsService,
+    private listService: ToDoListService,
     private navParams: NavParams,
     private popoverController: PopoverController,
   ) { }
@@ -23,12 +23,12 @@ export class ToDoListMenuComponent implements OnInit {
 
   goToEditPage() {
     this.popoverController.dismiss()
-    this.listOptionsService.editList(this.listDocId)
+    this.listService.editList(this.listDocId)
   }
 
   deleteList() {
     this.popoverController.dismiss()
-    this.listOptionsService.deleteList(this.listDocId)
+    this.listService.deleteList(this.listDocId)
   }
 
 }

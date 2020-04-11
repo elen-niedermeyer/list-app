@@ -9,7 +9,7 @@ import { ToDoItemDatabaseService } from './to-do-item-database.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ToDoListOptionsService {
+export class ToDoListService {
 
   constructor(
     private listDBService: ToDoListDatabaseService,

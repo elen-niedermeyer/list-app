@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToDoListDatabaseService } from 'src/app/services/to-do-list-database.service';
-import { ToDoListOptionsService } from 'src/app/services/to-do-list-options.service';
+import { ToDoListService } from 'src/app/services/to-do-list.service';
 import { ToDoList } from 'src/app/to-do-list';
 
 @Component({
@@ -18,7 +18,7 @@ export class EditListPage {
 
   constructor(
     private listDBService: ToDoListDatabaseService,
-    private listOptionsService: ToDoListOptionsService,
+    private listService: ToDoListService,
     private route: ActivatedRoute,
   ) { }
 
@@ -29,11 +29,11 @@ export class EditListPage {
   }
 
   updateListForm() {
-    this.listOptionsService.updateList(this.list)
+    this.listService.updateList(this.list)
   }
 
   deleteList() {
-    this.listOptionsService.deleteList(this.list.docId)
+    this.listService.deleteList(this.list.docId)
   }
 
 }
