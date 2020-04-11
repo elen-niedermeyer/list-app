@@ -27,4 +27,8 @@ export class AddItemPage implements OnInit {
     this.itemService.addItem(this.listDocId, this.item)
   }
 
+  removeDueDate() {
+    this.item.due_date = null
+  }
+
 }

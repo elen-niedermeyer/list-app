@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { AddButtonComponent } from './add-button/add-button.component';
 import { AddFabComponent } from './add-fab/add-fab.component';
+import { CancelButtonComponent } from './cancel-button/cancel-button.component';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { HeaderComponent } from './header/header.component';
 import { ItemInListComponent } from './item-in-list/item-in-list.component';
@@ -17,6 +18,7 @@ import { ToDoListMenuComponent } from './to-do-list-menu/to-do-list-menu.compone
   declarations: [
     AddButtonComponent,
     AddFabComponent,
+    CancelButtonComponent,
     DeleteButtonComponent,
     HeaderComponent,
     ItemInListComponent,
@@ -34,6 +36,7 @@ import { ToDoListMenuComponent } from './to-do-list-menu/to-do-list-menu.compone
   exports: [
     AddButtonComponent,
     AddFabComponent,
+    CancelButtonComponent,
     DeleteButtonComponent,
     HeaderComponent,
     ItemInListComponent,
