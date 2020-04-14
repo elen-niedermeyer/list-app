@@ -34,7 +34,7 @@ export class ToDoListService {
         }
       })
 
-      this.router.navigate(['/list', list.docId]);
+      this.router.navigate(['/list', list.docId], { replaceUrl: true });
     } else {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);
@@ -48,7 +48,7 @@ export class ToDoListService {
   async updateList(list: ToDoList) {
     let res = await this.listDBService.updateList(list)
     if (res.result) {
-      this.router.navigate(['/list', list.docId])
+      this.router.navigate(['/list', list.docId], { replaceUrl: true })
     } else {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);

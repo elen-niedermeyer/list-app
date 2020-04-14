@@ -20,7 +20,7 @@ export class ToDoItemService {
   async addItem(listDocId: string, item: ToDoItem) {
     let res = await this.itemDBService.addItem(listDocId, item);
     if (res.result) {
-      this.router.navigate(['/list', listDocId]);
+      this.router.navigate(['/list', listDocId], { replaceUrl: true });
     } else {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);
@@ -40,7 +40,7 @@ export class ToDoItemService {
   async updateItem(listDocId: string, item: ToDoItem) {
     let res = await this.itemDBService.updateItem(listDocId, item)
     if (res.result) {
-      this.router.navigate(['/item', listDocId, item.docId])
+      this.router.navigate(['/item', listDocId, item.docId], { replaceUrl: true })
     } else {
       // an error appeared
       this.errorAlertService.showErrorAlert(res.data);
