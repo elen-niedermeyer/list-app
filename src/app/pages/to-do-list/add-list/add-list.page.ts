@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ItemSortOrder } from 'src/app/item-sort-order.enum';
 import { ToDoListService } from 'src/app/services/to-do-list.service';
 import { ToDoItem } from 'src/app/to-do-item';
 import { ToDoList } from 'src/app/to-do-list';
@@ -22,7 +23,8 @@ export class AddListPage {
   list: ToDoList = {
     name: null as string,
     creation_date: new Date().toISOString(),
-    items: []
+    items: [],
+    item_sort_order: ItemSortOrder.DEFAULT
   } /*TODO: Was mache ich hiermit? */
 
   constructor(

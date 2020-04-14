@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { take } from 'rxjs/operators';
 import { ToDoListMenuComponent } from 'src/app/components/to-do-list-menu/to-do-list-menu.component';
+import { ItemSortOrder } from 'src/app/item-sort-order.enum';
 import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
+import { ToDoItemService } from 'src/app/services/to-do-item.service';
 import { ToDoList } from 'src/app/to-do-list';
 import { ToDoListDatabaseService } from '../../../services/to-do-list-database.service';
 
@@ -17,7 +19,8 @@ export class ViewListPage implements OnInit {
   list: ToDoList = {
     name: "",
     creation_date: null,
-    items: []
+    items: [],
+    item_sort_order: ItemSortOrder.DEFAULT
   }; /*TODO: was mache ich damit?*/
 
   areCheckedItemsShown: boolean = false;
@@ -25,6 +28,7 @@ export class ViewListPage implements OnInit {
   constructor(
     private listDBService: ToDoListDatabaseService,
     private itemDBService: ToDoItemDatabaseService,
+    private itemService: ToDoItemService,
     private route: ActivatedRoute,
     private popoverController: PopoverController
   ) { }
@@ -38,9 +42,9 @@ export class ViewListPage implements OnInit {
           this.itemDBService.getItemsFromList(this.list.docId)
             .pipe(take(1))
             .subscribe(items => {
-              this.list.items = items
+              this.list.items = this.itemService.sortItems(items, this.list.item_sort_order)
             })
-        });
+        })
     })
   }
 
