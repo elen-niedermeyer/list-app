@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { ItemSortOrder } from 'src/app/item-sort-order.enum';
+import { ITEM_SORT_ORDER } from 'src/app/item-sort-order.enum';
 import { ToDoListDatabaseService } from 'src/app/services/to-do-list-database.service';
 import { ToDoListService } from 'src/app/services/to-do-list.service';
 import { ToDoList } from 'src/app/to-do-list';
@@ -16,7 +16,7 @@ export class EditListPage {
     name: null as string,
     creation_date: null,
     items: [],
-    item_sort_order: ItemSortOrder.DEFAULT
+    item_sort_order: ITEM_SORT_ORDER.DEFAULT
   } /*TODO: Was mache ich hiermit? */
 
   constructor(

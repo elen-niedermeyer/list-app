@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { take } from 'rxjs/operators';
+import { SortingMenuComponent } from 'src/app/components/sorting-menu/sorting-menu.component';
 import { ToDoListMenuComponent } from 'src/app/components/to-do-list-menu/to-do-list-menu.component';
-import { ItemSortOrder } from 'src/app/item-sort-order.enum';
+import { ITEM_SORT_ORDER } from 'src/app/item-sort-order.enum';
 import { ToDoItemDatabaseService } from 'src/app/services/to-do-item-database.service';
 import { ToDoItemService } from 'src/app/services/to-do-item.service';
 import { ToDoList } from 'src/app/to-do-list';
@@ -20,7 +21,7 @@ export class ViewListPage implements OnInit {
     name: "",
     creation_date: null,
     items: [],
-    item_sort_order: ItemSortOrder.DEFAULT
+    item_sort_order: ITEM_SORT_ORDER.DEFAULT
   }; /*TODO: was mache ich damit?*/
 
   areCheckedItemsShown: boolean = false;
@@ -58,6 +59,16 @@ export class ViewListPage implements OnInit {
 
   toggleShowCheckedItems() {
     this.areCheckedItemsShown = !this.areCheckedItemsShown;
+  }
+
+  async showSortingSettingsPopover(event) {
+    const popover = await this.popoverController.create({
+      component: SortingMenuComponent,
+      event: event,
+      componentProps: { docId: this.list.docId }
+    })
+
+    return await popover.present()
   }
 
   async showListSettingsPopover(event) {

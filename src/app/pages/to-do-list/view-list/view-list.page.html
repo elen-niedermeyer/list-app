@@ -1,4 +1,5 @@
 <app-header [title]="list.name">
+  <app-sorting-button slot="end" (click)="showSortingSettingsPopover($event)"></app-sorting-button>
   <app-settings-button slot="end" (click)="showListSettingsPopover($event)"></app-settings-button>
 </app-header>
 

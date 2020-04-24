@@ -1,4 +1,4 @@
-export enum ItemSortOrder {
+export enum ITEM_SORT_ORDER {
     CREATION_DATE_DESC = 0,
     CREATION_DATE_ASC = 1,
     ALPHA_DESC = 2,

@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { ItemInListComponent } from './item-in-list/item-in-list.component';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { SettingsButtonComponent } from './settings-button/settings-button.component';
+import { SortingButtonComponent } from './sorting-button/sorting-button.component';
+import { SortingMenuComponent } from './sorting-menu/sorting-menu.component';
 import { ToDoItemMenuComponent } from './to-do-item-menu/to-do-item-menu.component';
 import { ToDoListMenuComponent } from './to-do-list-menu/to-do-list-menu.component';
 
@@ -24,6 +26,8 @@ import { ToDoListMenuComponent } from './to-do-list-menu/to-do-list-menu.compone
     ItemInListComponent,
     RemoveButtonComponent,
     SettingsButtonComponent,
+    SortingButtonComponent,
+    SortingMenuComponent,
     ToDoItemMenuComponent,
     ToDoListMenuComponent
   ],
@@ -42,6 +46,8 @@ import { ToDoListMenuComponent } from './to-do-list-menu/to-do-list-menu.compone
     ItemInListComponent,
     RemoveButtonComponent,
     SettingsButtonComponent,
+    SortingButtonComponent,
+    SortingMenuComponent,
     ToDoItemMenuComponent,
     ToDoListMenuComponent
   ]

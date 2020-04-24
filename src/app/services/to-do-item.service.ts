@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ITEM_SORT_ORDER } from '../item-sort-order.enum';
 import { ToDoItem } from '../to-do-item';
 import { ErrorAlertService } from './error-alert.service';
 import { ToDoItemDatabaseService } from './to-do-item-database.service';
@@ -73,6 +74,23 @@ export class ToDoItemService {
     })
 
     await alert.present()
+  }
+
+  sortItems(items: ToDoItem[], sortOrder: ITEM_SORT_ORDER): ToDoItem[] {
+    switch (sortOrder) {
+      case ITEM_SORT_ORDER.CREATION_DATE_DESC:
+        return items.sort((a, b) => (a.creation_date < b.creation_date) ? 1 : -1)
+      case ITEM_SORT_ORDER.CREATION_DATE_ASC:
+        return items.sort((a, b) => (a.creation_date > b.creation_date) ? 1 : -1)
+      case ITEM_SORT_ORDER.ALPHA_DESC:
+        return items.sort((a, b) => (a.name < b.name) ? 1 : -1)
+      case ITEM_SORT_ORDER.ALPHA_ASC:
+        return items.sort((a, b) => (a.name > b.name) ? 1 : -1)
+      case ITEM_SORT_ORDER.DUE_DESC:
+        return items.sort((a, b) => (a.due_date < b.due_date) ? 1 : -1)
+      case ITEM_SORT_ORDER.DUE_ASC:
+        return items.sort((a, b) => (a.due_date > b.due_date) ? 1 : -1)
+    }
   }
 
   private async handleItemDeletion(listDocId: string, itemDocId: string) {

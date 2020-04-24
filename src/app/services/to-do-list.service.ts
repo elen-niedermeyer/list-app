@@ -55,6 +55,16 @@ export class ToDoListService {
     }
   }
 
+  async updateListProperty(listDocId: string, data: any) {
+    let res = await this.listDBService.updateListProperty(listDocId, data)
+    if (res.result) {
+      this.router.navigate(['/list', listDocId], { replaceUrl: true })
+    } else {
+      // an error appeared
+      this.errorAlertService.showErrorAlert(res.data);
+    }
+  }
+
   async deleteList(listDocId: string) {
     const alert = await this.alertController.create({
       header: 'Delete List',

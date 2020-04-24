@@ -25,7 +25,8 @@ export class ViewItemPage implements OnInit {
     public itemService: ToDoItemService,
     private itemDBService: ToDoItemDatabaseService,
     private route: ActivatedRoute,
-    private popoverController: PopoverController) { }
+    private popoverController: PopoverController
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

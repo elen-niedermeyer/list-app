@@ -38,9 +38,14 @@ export class ToDoListDatabaseService {
       .catch(error => { return { result: false, data: error } })
   }
 
-  // TODO: only updates name
   updateList(updatedList: ToDoList): Promise<Response> {
-    return this.listsCollection.doc(updatedList.docId).update({ name: updatedList.name })
+    return this.listsCollection.doc(updatedList.docId).update({ name: updatedList.name, item_sort_order: updatedList.item_sort_order })
+      .then(() => { return { result: true, data: null } })
+      .catch(error => { return { result: false, data: error } })
+  }
+
+  updateListProperty(listDocId: string, data: any): Promise<Response> {
+    return this.listsCollection.doc(listDocId).update(data)
       .then(() => { return { result: true, data: null } })
       .catch(error => { return { result: false, data: error } })
   }

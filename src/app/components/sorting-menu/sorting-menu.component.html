@@ -1,0 +1,7 @@
+<ion-content>
+  <ion-list class="option-menu-list">
+    <div *ngFor="let key of sortingOrderKeys" class="list-row" (click)="updateSorting(key)">
+      {{sortOrderToString(ITEM_SORT_ORDER[key])}}
+    </div>
+  </ion-list>
+</ion-content>
